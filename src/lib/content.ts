@@ -31,7 +31,7 @@ export const school = {
   heroKicker: "A Montessori education in Accra",
   heroHeadline: "Where curiosity becomes confidence.",
   heroSubhead:
-    "Graceland Montessori is a warm, child-centred school in East Legon, Accra, guiding children from 1 to 12 years through a hands-on Montessori education — at their own pace, in their own time.",
+    "Graceland Montessori is a warm, child-centred school in East La (Tse Addo), Accra, guiding children from 1 to 12 years through a hands-on Montessori education — at their own pace, in their own time.",
   mission:
     "Our mission is to provide a safe, supportive, and stimulating learning environment where every child is encouraged to explore, discover, and grow.",
   vision:
@@ -121,11 +121,12 @@ export const schedule = {
 };
 
 export const contact = {
-  address: "Levites St, Burma Hills, East Legon, Accra, Ghana",
+  address: "Tse Addo, East La, Accra, Ghana",
   phones: ["+233 55 122 7660", "+233 24 458 5261"],
   email: "info@gracelandmontessori.com",
   officeHours: "Mon – Fri, 8:00 AM – 5:00 PM",
-  mapQuery: "Levites St, Burma Hills, East Legon, Accra, Ghana",
+  // Google Plus Code for the school — pins the map exactly rather than relying on a text search.
+  mapQuery: "HVR5+45 Accra",
 };
 
 export const events = [

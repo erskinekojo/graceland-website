@@ -8,7 +8,7 @@ const stats = [
   { value: "1–12", label: "years old, one school journey" },
   { value: "4", label: "Montessori-trained classroom communities" },
   { value: "Mon–Fri", label: `${schedule.hours}` },
-  { value: "East Legon", label: "Accra, Ghana" },
+  { value: "East La", label: "Accra, Ghana" },
 ];
 
 export default function Home() {

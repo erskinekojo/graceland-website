@@ -21,7 +21,7 @@ export function SiteFooter() {
           </div>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-brand-100/80">
             {school.tagline}. A Montessori education for children 1–12 in
-            East Legon, Accra.
+            East La (Tse Addo), Accra.
           </p>
         </div>
 
