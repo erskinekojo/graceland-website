@@ -1,6 +1,7 @@
 "use server";
 
 import { programmes } from "@/lib/content";
+import { sendToWeb3Forms } from "@/lib/web3forms";
 
 export type InquiryState = {
   status: "idle" | "success" | "error";
@@ -13,15 +14,15 @@ export type InquiryState = {
  *
  * FUTURE INTEGRATION SEAM: this is the one place an admissions inquiry
  * passes through on its way out of the site. Today, with no backend wired
- * up, it validates the submission and — if ADMISSIONS_WEBHOOK_URL is set —
- * forwards it as JSON to that URL; otherwise it just logs server-side so
- * nothing is silently lost during development.
+ * up, it validates the submission and — if WEB3FORMS_ACCESS_KEY is set —
+ * emails it to the school via Web3Forms (see src/lib/web3forms.ts);
+ * otherwise it just logs server-side so nothing is silently lost during
+ * development.
  *
  * When the school's internal management system is ready to receive these,
- * point ADMISSIONS_WEBHOOK_URL at its inquiries endpoint (or replace the
- * forwarding block below with a direct, authenticated call to that
- * system's API). No other file needs to change — every page that renders
- * the form calls this same action.
+ * replace the sendToWeb3Forms call below with a direct, authenticated call
+ * to that system's API. No other file needs to change — every page that
+ * renders the form calls this same action.
  */
 export async function submitInquiry(
   _prevState: InquiryState,
@@ -62,28 +63,35 @@ export async function submitInquiry(
     return { status: "success", message: "Thank you — we'll be in touch soon." };
   }
 
+  const programmeLabel =
+    programmes.find((p) => p.slug === programmeInterest)?.name || programmeInterest || null;
+
   const inquiry = {
     parentName,
     email: email || null,
     phone: phone || null,
     childName: childName || null,
     childAge,
-    programmeInterest: programmeInterest || null,
+    programmeInterest: programmeLabel,
     message: message || null,
     submittedAt: new Date().toISOString(),
     source: "public-website",
   };
 
-  const webhookUrl = process.env.ADMISSIONS_WEBHOOK_URL;
-  if (webhookUrl) {
+  if (process.env.WEB3FORMS_ACCESS_KEY) {
     try {
-      await fetch(webhookUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(inquiry),
+      await sendToWeb3Forms("New admissions inquiry", {
+        "Parent name": parentName,
+        Email: email || "(not provided)",
+        Phone: phone || "(not provided)",
+        "Child's name": childName || "(not provided)",
+        "Child's age": childAge,
+        "Programme interest": programmeLabel || "(not specified)",
+        Message: message || "(none)",
+        "Submitted at": inquiry.submittedAt,
       });
     } catch (err) {
-      console.error("Admissions webhook forwarding failed:", err);
+      console.error("Admissions form delivery failed:", err);
       return {
         status: "error",
         message:
@@ -91,9 +99,9 @@ export async function submitInquiry(
       };
     }
   } else {
-    // No backend configured yet — log so the submission is at least
+    // No delivery configured yet — log so the submission is at least
     // visible in server logs during development / before launch.
-    console.log("New admissions inquiry (no webhook configured):", inquiry);
+    console.log("New admissions inquiry (WEB3FORMS_ACCESS_KEY not set):", inquiry);
   }
 
   return {
