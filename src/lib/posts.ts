@@ -170,6 +170,63 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "breast-cancer-awareness-screening",
+    title: "Hosting a breast cancer awareness screening for our community",
+    excerpt:
+      "For Breast Cancer Awareness Month, we opened our doors to parents and the wider community for a free health screening — blood pressure checks, consultations, and honest conversation.",
+    body: [
+      "This October, Graceland partnered with health professionals to host a breast cancer awareness screening event, open to parents, staff, and the wider community around East La.",
+      "Volunteers from the Ghana Health Service and local hospitals ran the day — sitting down with each visitor for a one-on-one consultation, taking blood pressure readings, and sharing information on early detection and self-examination. It was as much about honest conversation as it was about the checks themselves.",
+      "It wasn't just for the grown-ups. With children in tow, we also had a table for height and weight checks, which turned out to be one of the most popular stops of the day.",
+      "Thank you to every volunteer who gave their time, and to the parents and community members who came through. Events like this are exactly the kind of thing Graceland wants to keep doing — using our space for more than just the school day.",
+    ],
+    publishedAt: "2025-10-25",
+    author: "Graceland Montessori",
+    category: "Community",
+    heroImage: {
+      src: "/photos/breast-cancer-awareness-screening/awareness-conversation.jpg",
+      alt: "A health volunteer wearing a Breast Cancer Awareness t-shirt speaking with a community member",
+      caption: "A volunteer sharing information on early detection during the screening",
+    },
+    gallery: [
+      {
+        src: "/photos/breast-cancer-awareness-screening/consultation-intake.jpg",
+        alt: "A health volunteer speaking with a community member at a consultation table",
+        caption: "One-on-one consultations were the starting point for every visitor",
+      },
+      {
+        src: "/photos/breast-cancer-awareness-screening/bp-check-smiling.jpg",
+        alt: "A smiling woman having her blood pressure checked by a health volunteer",
+        caption: "Free blood pressure checks throughout the day",
+      },
+      {
+        src: "/photos/breast-cancer-awareness-screening/bp-check-headscarf.jpg",
+        alt: "A woman having her blood pressure checked by a health volunteer",
+        caption: "Every visitor was screened, one on one",
+      },
+      {
+        src: "/photos/breast-cancer-awareness-screening/toddler-height-check.jpg",
+        alt: "A toddler being measured on a height scale by a staff member",
+        caption: "A height and weight table kept the younger visitors busy too",
+      },
+      {
+        src: "/photos/breast-cancer-awareness-screening/boys-height-check.jpg",
+        alt: "Three boys lined up to be measured on a height scale",
+        caption: "Lining up for height checks",
+      },
+      {
+        src: "/photos/breast-cancer-awareness-screening/family-group.jpg",
+        alt: "A mother with four children posing together at the event, decorated with pink and white balloons",
+        caption: "Families came out to support the day",
+      },
+      {
+        src: "/photos/breast-cancer-awareness-screening/volunteers-group.jpg",
+        alt: "A group of health volunteers wearing pink 'Hope, Faith, Support' t-shirts",
+        caption: "Some of the volunteers who made the day possible",
+      },
+    ],
+  },
 ];
 
 export function getAllPosts(): Post[] {

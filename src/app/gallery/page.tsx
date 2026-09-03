@@ -82,6 +82,31 @@ const albums: { title: string; items: AlbumItem[] }[] = [
       },
     ],
   },
+  {
+    title: "Community",
+    items: [
+      {
+        src: "/photos/breast-cancer-awareness-screening/awareness-conversation.jpg",
+        alt: "A health volunteer wearing a Breast Cancer Awareness t-shirt speaking with a community member",
+        caption: "Our breast cancer awareness screening, open to parents and the community",
+      },
+      {
+        src: "/photos/breast-cancer-awareness-screening/bp-check-smiling.jpg",
+        alt: "A smiling woman having her blood pressure checked by a health volunteer",
+        caption: "Free blood pressure checks throughout the day",
+      },
+      {
+        src: "/photos/breast-cancer-awareness-screening/toddler-height-check.jpg",
+        alt: "A toddler being measured on a height scale by a staff member",
+        caption: "A height and weight table for the younger visitors",
+      },
+      {
+        src: "/photos/breast-cancer-awareness-screening/volunteers-group.jpg",
+        alt: "A group of health volunteers wearing pink 'Hope, Faith, Support' t-shirts",
+        caption: "Some of the volunteers who made the day possible",
+      },
+    ],
+  },
 ];
 
 export default function GalleryPage() {
