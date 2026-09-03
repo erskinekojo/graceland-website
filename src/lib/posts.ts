@@ -185,20 +185,20 @@ export const posts: Post[] = [
     author: "Graceland Montessori",
     category: "Community",
     heroImage: {
-      src: "/photos/breast-cancer-awareness-screening/awareness-conversation.jpg",
-      alt: "A health volunteer wearing a Breast Cancer Awareness t-shirt speaking with a community member",
-      caption: "A volunteer sharing information on early detection during the screening",
+      src: "/photos/breast-cancer-awareness-screening/bp-check-smiling.jpg",
+      alt: "A smiling woman having her blood pressure checked by a health volunteer",
+      caption: "Free blood pressure checks throughout the day",
     },
     gallery: [
+      {
+        src: "/photos/breast-cancer-awareness-screening/awareness-conversation.jpg",
+        alt: "A health volunteer wearing a Breast Cancer Awareness t-shirt speaking with a community member",
+        caption: "A volunteer sharing information on early detection during the screening",
+      },
       {
         src: "/photos/breast-cancer-awareness-screening/consultation-intake.jpg",
         alt: "A health volunteer speaking with a community member at a consultation table",
         caption: "One-on-one consultations were the starting point for every visitor",
-      },
-      {
-        src: "/photos/breast-cancer-awareness-screening/bp-check-smiling.jpg",
-        alt: "A smiling woman having her blood pressure checked by a health volunteer",
-        caption: "Free blood pressure checks throughout the day",
       },
       {
         src: "/photos/breast-cancer-awareness-screening/bp-check-headscarf.jpg",
