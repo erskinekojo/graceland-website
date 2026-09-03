@@ -34,7 +34,28 @@ const albums: { title: string; items: AlbumItem[] }[] = [
   },
   {
     title: "Events",
-    items: ["Open Day", "Sports Day", "Graduation", "Cultural Day"],
+    items: [
+      {
+        src: "/photos/inter-school-abacus-competition/assembly-abacus.jpg",
+        alt: "Graceland pupils seated with abacus tools during the opening assembly",
+        caption: "Opening assembly for our first inter-school Abacus competition",
+      },
+      {
+        src: "/photos/inter-school-abacus-competition/staff-remarks.jpg",
+        alt: "Graceland staff giving welcoming remarks at a podium decorated with balloons and banners",
+        caption: "Welcoming remarks to open the competition",
+      },
+      {
+        src: "/photos/inter-school-abacus-competition/kente-dance.jpg",
+        alt: "Young Graceland pupils performing a traditional Ghanaian dance in kente cloth",
+        caption: "A traditional dance performance between rounds",
+      },
+      {
+        src: "/photos/inter-school-abacus-competition/trophy-raised.jpg",
+        alt: "A young Graceland pupil raising the competition trophy overhead",
+        caption: "Trophy raised high to close out the day",
+      },
+    ],
   },
   {
     title: "Field trips",

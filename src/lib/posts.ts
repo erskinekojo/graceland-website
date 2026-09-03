@@ -118,6 +118,58 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "first-inter-school-abacus-competition",
+    title: "Our first inter-school Abacus competition",
+    excerpt:
+      "Graceland hosted The Baylees Kidz Hub Montessori for a morning of mental-maths competition, cultural dance, and a trophy — our first inter-school event of its kind.",
+    body: [
+      "We hosted our very first inter-school competition this term — a mental-maths Abacus challenge that brought pupils from The Baylees Kidz Hub Montessori to Graceland for a morning of friendly competition.",
+      "The day opened with an assembly, with pupils from both schools singing together before staff from each school welcomed everyone and set the tone for the morning. Then it was down to business: rows of pupils at their desks, abacus tools in hand, working through mental-maths problems with real focus and concentration.",
+      "Between rounds, our younger pupils performed a traditional Ghanaian dance in kente cloth — a favourite with the crowd, and a reminder that a day like this is about more than the competition itself. It closed with medals for the participants and a trophy raised high by one of our own, a proud moment for the whole school.",
+      "Thank you to The Baylees Kidz Hub Montessori for joining us, and to every pupil who competed. We're already looking forward to the next one.",
+    ],
+    publishedAt: "2026-02-27",
+    author: "Graceland Montessori",
+    category: "Competitions",
+    heroImage: {
+      src: "/photos/inter-school-abacus-competition/assembly-abacus.jpg",
+      alt: "Graceland pupils seated with abacus tools during the opening assembly, in front of a 'welcome back to school' mural",
+      caption: "Pupils with their abacus tools at the opening assembly",
+    },
+    gallery: [
+      {
+        src: "/photos/inter-school-abacus-competition/speaking-mic.jpg",
+        alt: "A Graceland pupil speaking into a microphone alongside classmates during the assembly",
+        caption: "Pupils leading the opening assembly",
+      },
+      {
+        src: "/photos/inter-school-abacus-competition/staff-remarks.jpg",
+        alt: "Graceland staff giving welcoming remarks at a podium, decorated with balloons and school banners",
+        caption: "Welcoming remarks to open the competition",
+      },
+      {
+        src: "/photos/inter-school-abacus-competition/abacus-group-desk.jpg",
+        alt: "Three Graceland pupils working through mental-maths problems together with abacus tools at a desk",
+        caption: "Working through the rounds together",
+      },
+      {
+        src: "/photos/inter-school-abacus-competition/abacus-focus.jpg",
+        alt: "A Graceland pupil concentrating closely while using an abacus tool",
+        caption: "Deep concentration during the competition",
+      },
+      {
+        src: "/photos/inter-school-abacus-competition/kente-dance.jpg",
+        alt: "Young Graceland pupils performing a traditional Ghanaian dance in kente cloth",
+        caption: "A traditional dance performance between rounds",
+      },
+      {
+        src: "/photos/inter-school-abacus-competition/trophy-raised.jpg",
+        alt: "A young Graceland pupil raising the competition trophy overhead",
+        caption: "Trophy raised high to close out the day",
+      },
+    ],
+  },
 ];
 
 export function getAllPosts(): Post[] {
