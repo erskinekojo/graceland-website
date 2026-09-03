@@ -22,7 +22,7 @@ export type Programme = {
 
 // URL for the internal school-management system's login (parent/staff portal).
 // Points at the "portal" subdomain seen in DNS — update here if that changes.
-export const portalLoginUrl = "https://portal.gracelandmontessori.com/login";
+export const portalLoginUrl = "https://my.gracelandmontessori.com/admin";
 
 export const school = {
   name: "Graceland Montessori",
