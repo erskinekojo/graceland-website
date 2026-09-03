@@ -80,6 +80,21 @@ const albums: { title: string; items: AlbumItem[] }[] = [
         alt: "Graceland pupils and staff posing together outside the Ghana National Museum",
         caption: "The whole group outside the museum after a morning of exploring",
       },
+      {
+        src: "/photos/nkrumah-mausoleum-field-trip/group-portraits-wall.jpg",
+        alt: "Graceland pupils and staff gathered beneath a wall of portraits of Ghana's founding figures",
+        caption: "The whole group at the Kwame Nkrumah Memorial Park",
+      },
+      {
+        src: "/photos/nkrumah-mausoleum-field-trip/walking-to-statue.jpg",
+        alt: "Pupils and staff walking across the grounds toward the bronze statue of Kwame Nkrumah",
+        caption: "Walking the grounds past the statue of Dr. Kwame Nkrumah",
+      },
+      {
+        src: "/photos/nkrumah-mausoleum-field-trip/tomb-guide-talking.jpg",
+        alt: "Pupils gathered around the mausoleum's tomb listening to a guide",
+        caption: "Listening as our guide told the story of independence",
+      },
     ],
   },
   {
