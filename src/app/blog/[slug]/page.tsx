@@ -2,8 +2,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Photo } from "@/components/photo";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
+import { ShareButtons } from "@/components/share-buttons";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
-import { school } from "@/lib/content";
+import { school, siteUrl } from "@/lib/content";
 
 export async function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
@@ -17,9 +18,28 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) return { title: `Blog — ${school.name}` };
+
+  const ogImage = post.heroImage
+    ? { url: post.heroImage.src, width: 2000, height: 1500, alt: post.heroImage.alt }
+    : { url: "/og-default.jpg", width: 1200, height: 630, alt: `${school.name} crest` };
+
   return {
-    title: `${post.title} — ${school.name} Blog`,
+    title: `${post.title} — ${school.name}`,
     description: post.excerpt,
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.excerpt,
+      url: `/blog/${post.slug}`,
+      publishedTime: post.publishedAt,
+      images: [ogImage],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [ogImage.url],
+    },
   };
 }
 
@@ -52,6 +72,10 @@ export default async function BlogPostPage({
         })}{" "}
         · {post.author}
       </p>
+
+      <div className="mt-5">
+        <ShareButtons url={`${siteUrl}/blog/${post.slug}`} title={post.title} />
+      </div>
 
       {post.heroImage ? (
         <Photo

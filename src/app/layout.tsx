@@ -2,11 +2,29 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { school } from "@/lib/content";
+import { school, siteUrl } from "@/lib/content";
+
+const defaultTitle = `${school.name} — ${school.tagline}`;
 
 export const metadata: Metadata = {
-  title: `${school.name} — ${school.tagline}`,
+  metadataBase: new URL(siteUrl),
+  title: defaultTitle,
   description: school.heroSubhead,
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName: school.name,
+    title: defaultTitle,
+    description: school.heroSubhead,
+    images: [{ url: "/og-default.jpg", width: 1200, height: 630, alt: `${school.name} crest` }],
+    locale: "en_GH",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: defaultTitle,
+    description: school.heroSubhead,
+    images: ["/og-default.jpg"],
+  },
 };
 
 export default function RootLayout({

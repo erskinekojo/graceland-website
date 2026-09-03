@@ -6,6 +6,11 @@ import { approachPillars, school, staff } from "@/lib/content";
 export const metadata = {
   title: `About Us — ${school.name}`,
   description: school.mission,
+  openGraph: {
+    title: `About Us — ${school.name}`,
+    description: school.mission,
+    url: "/about",
+  },
 };
 
 export default function AboutPage() {

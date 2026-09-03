@@ -24,6 +24,10 @@ export type Programme = {
 // Points at the "portal" subdomain seen in DNS — update here if that changes.
 export const portalLoginUrl = "https://my.gracelandmontessori.com/admin";
 
+// The site's canonical production URL — used for absolute links (share
+// buttons, Open Graph metadata) that need a full URL rather than a path.
+export const siteUrl = "https://www.gracelandmontessori.com";
+
 export const school = {
   name: "Graceland Montessori",
   shortName: "Graceland",

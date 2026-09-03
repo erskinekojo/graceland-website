@@ -7,6 +7,11 @@ import { school } from "@/lib/content";
 export const metadata = {
   title: `Blog & News — ${school.name}`,
   description: "News and updates from Graceland Montessori.",
+  openGraph: {
+    title: `Blog & News — ${school.name}`,
+    description: "News and updates from Graceland Montessori.",
+    url: "/blog",
+  },
 };
 
 export default function BlogPage() {

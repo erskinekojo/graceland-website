@@ -4,6 +4,11 @@ import { contact, schedule, school } from "@/lib/content";
 export const metadata = {
   title: `Contact — ${school.name}`,
   description: "Get in touch with Graceland Montessori.",
+  openGraph: {
+    title: `Contact — ${school.name}`,
+    description: "Get in touch with Graceland Montessori.",
+    url: "/contact",
+  },
 };
 
 export default function ContactPage() {

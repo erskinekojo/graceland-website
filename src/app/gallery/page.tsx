@@ -6,6 +6,19 @@ import { school } from "@/lib/content";
 export const metadata = {
   title: `Gallery — ${school.name}`,
   description: "A look at everyday life and classrooms at Graceland Montessori.",
+  openGraph: {
+    title: `Gallery — ${school.name}`,
+    description: "A look at everyday life and classrooms at Graceland Montessori.",
+    url: "/gallery",
+    images: [
+      {
+        url: "/photos/field-trip-museum/group-outdoor.jpg",
+        width: 2000,
+        height: 1333,
+        alt: "Graceland pupils and staff on a school field trip",
+      },
+    ],
+  },
 };
 
 type AlbumItem = string | { src: string; alt: string; caption: string };

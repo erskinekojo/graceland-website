@@ -5,6 +5,11 @@ import { admissionsFaqs, admissionsSteps, contact, school } from "@/lib/content"
 export const metadata = {
   title: `Admissions — ${school.name}`,
   description: "Start your child's Montessori journey at Graceland — book a visit or send an inquiry.",
+  openGraph: {
+    title: `Admissions — ${school.name}`,
+    description: "Start your child's Montessori journey at Graceland — book a visit or send an inquiry.",
+    url: "/admissions",
+  },
 };
 
 export default function AdmissionsPage() {

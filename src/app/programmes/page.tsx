@@ -6,6 +6,11 @@ import { programmes, schedule, school } from "@/lib/content";
 export const metadata = {
   title: `Programmes — ${school.name}`,
   description: "Montessori programmes for children 1–12 years at Graceland Montessori.",
+  openGraph: {
+    title: `Programmes — ${school.name}`,
+    description: "Montessori programmes for children 1–12 years at Graceland Montessori.",
+    url: "/programmes",
+  },
 };
 
 export default function ProgrammesPage() {
