@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Photo } from "@/components/photo";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import { school } from "@/lib/content";
@@ -52,11 +53,22 @@ export default async function BlogPostPage({
         · {post.author}
       </p>
 
-      <PhotoPlaceholder
-        label={`${post.title} photo`}
-        aspect="aspect-[16/9]"
-        className="mt-8 shadow-lg shadow-brand-900/10"
-      />
+      {post.heroImage ? (
+        <Photo
+          src={post.heroImage.src}
+          alt={post.heroImage.alt}
+          caption={post.heroImage.caption}
+          aspect="aspect-[16/9]"
+          className="mt-8 [&>div]:shadow-lg [&>div]:shadow-brand-900/10"
+          sizes="(min-width: 768px) 768px, 100vw"
+        />
+      ) : (
+        <PhotoPlaceholder
+          label={`${post.title} photo`}
+          aspect="aspect-[16/9]"
+          className="mt-8 shadow-lg shadow-brand-900/10"
+        />
+      )}
 
       <div className="prose-graceland mt-8 space-y-5">
         {post.body.map((paragraph, i) => (
@@ -65,6 +77,21 @@ export default async function BlogPostPage({
           </p>
         ))}
       </div>
+
+      {post.gallery && post.gallery.length > 0 && (
+        <div className="mt-10 grid gap-6 border-t border-brand-100 pt-10 sm:grid-cols-2">
+          {post.gallery.map((photo) => (
+            <Photo
+              key={photo.src}
+              src={photo.src}
+              alt={photo.alt}
+              caption={photo.caption}
+              aspect="aspect-[4/3]"
+              sizes="(min-width: 640px) 50vw, 100vw"
+            />
+          ))}
+        </div>
+      )}
 
       <div className="mt-12 rounded-2xl border border-brand-100 bg-brand-50 p-6 text-center">
         <p className="font-heading text-base font-bold text-brand-950">

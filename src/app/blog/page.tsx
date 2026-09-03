@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Photo } from "@/components/photo";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { getAllPosts } from "@/lib/posts";
 import { school } from "@/lib/content";
@@ -33,7 +34,17 @@ export default function BlogPage() {
             href={`/blog/${post.slug}`}
             className="group flex flex-col overflow-hidden rounded-2xl border border-brand-100 bg-white transition hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-900/10"
           >
-            <PhotoPlaceholder label={`${post.title} photo`} aspect="aspect-[5/3]" className="rounded-none rounded-t-2xl border-0" />
+            {post.heroImage ? (
+              <Photo
+                src={post.heroImage.src}
+                alt={post.heroImage.alt}
+                aspect="aspect-[5/3]"
+                className="[&>div]:rounded-none [&>div]:rounded-t-2xl [&>div]:border-0"
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+              />
+            ) : (
+              <PhotoPlaceholder label={`${post.title} photo`} aspect="aspect-[5/3]" className="rounded-none rounded-t-2xl border-0" />
+            )}
             <div className="flex flex-1 flex-col p-5">
               <span className="text-xs font-semibold uppercase tracking-wide text-sun-600">
                 {post.category}

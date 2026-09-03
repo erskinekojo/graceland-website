@@ -18,6 +18,8 @@
  * it belongs.
  */
 
+export type PostPhoto = { src: string; alt: string; caption: string };
+
 export type Post = {
   slug: string;
   title: string;
@@ -26,6 +28,10 @@ export type Post = {
   publishedAt: string;
   author: string;
   category: string;
+  /** A real photo for the post header. Falls back to PhotoPlaceholder when absent. */
+  heroImage?: PostPhoto;
+  /** Extra real photos shown as a small captioned gallery at the end of the post. */
+  gallery?: PostPhoto[];
 };
 
 export const posts: Post[] = [
@@ -69,6 +75,48 @@ export const posts: Post[] = [
     publishedAt: "2026-03-28",
     author: "Graceland Montessori",
     category: "Events",
+  },
+  {
+    slug: "ghana-month-museum-field-trip",
+    title: "Ghana Month: our class trip to the Ghana National Museum",
+    excerpt:
+      "As part of our Ghana Month celebrations, our Primary pupils spent a morning exploring the Ghana National Museum — here's what they discovered.",
+    body: [
+      "Every March, in the lead-up to Independence Day, Graceland sets aside time to celebrate Ghana Month — a chance for our pupils to dig into the history, culture, and stories that shape the country they're growing up in. This year, that meant a morning at the Ghana National Museum in Accra.",
+      "Our Lower and Upper Primary pupils explored exhibits spanning the Stone Age through to more recent Ghanaian history, guided by museum staff who brought each display to life — from a traditional grinding stone the children could examine up close, to rock art and a map tracing the movement of peoples and trade routes across the region.",
+      "It's exactly the kind of learning we look for outside the classroom: hands-on, led by genuine curiosity, and full of the same close observation our pupils practise every day with Montessori materials at school — just applied to the real, physical history around them. The questions kept coming long after we'd left the museum.",
+      "Thank you to the Ghana National Museum for hosting us, and to our wonderful staff and pupils for making it such a memorable morning. A few photos from the day are below.",
+    ],
+    publishedAt: "2026-03-05",
+    author: "Graceland Montessori",
+    category: "Field Trips",
+    heroImage: {
+      src: "/photos/field-trip-museum/grinding-stone.jpg",
+      alt: "Graceland pupils gathered closely around a traditional grinding stone exhibit",
+      caption: "A close look at a traditional grinding stone during our Ghana National Museum visit",
+    },
+    gallery: [
+      {
+        src: "/photos/field-trip-museum/museum-hall.jpg",
+        alt: "The group listening to a guide inside the Ghana National Museum's main hall",
+        caption: "Our guide walking the group through the museum's main hall",
+      },
+      {
+        src: "/photos/field-trip-museum/rock-art.jpg",
+        alt: "A guide pointing out details in a rock-art exhibit to Graceland pupils",
+        caption: "Examining a rock-art exhibit up close",
+      },
+      {
+        src: "/photos/field-trip-museum/ghana-map.jpg",
+        alt: "Pupils looking closely at a map exhibit tracing Ghana's history",
+        caption: "Tracing Ghana's history across the museum's regional map",
+      },
+      {
+        src: "/photos/field-trip-museum/group-outdoor.jpg",
+        alt: "Graceland pupils and staff posing together outside the Ghana National Museum",
+        caption: "The whole group outside the museum, all smiles after a busy morning",
+      },
+    ],
   },
 ];
 

@@ -1,3 +1,4 @@
+import { Photo } from "@/components/photo";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { SectionHeading } from "@/components/section-heading";
 import { school } from "@/lib/content";
@@ -7,7 +8,9 @@ export const metadata = {
   description: "A look at everyday life and classrooms at Graceland Montessori.",
 };
 
-const albums = [
+type AlbumItem = string | { src: string; alt: string; caption: string };
+
+const albums: { title: string; items: AlbumItem[] }[] = [
   {
     title: "In the classroom",
     items: ["Practical life work", "Sensorial materials", "Language & reading corner", "Maths materials"],
@@ -19,6 +22,31 @@ const albums = [
   {
     title: "Events",
     items: ["Open Day", "Sports Day", "Graduation", "Cultural Day"],
+  },
+  {
+    title: "Field trips",
+    items: [
+      {
+        src: "/photos/field-trip-museum/grinding-stone.jpg",
+        alt: "Children gathered around a traditional grinding stone exhibit at the Ghana National Museum",
+        caption: "A close look at a traditional grinding stone, Ghana Month museum trip",
+      },
+      {
+        src: "/photos/field-trip-museum/rock-art.jpg",
+        alt: "A guide pointing out details in a rock-art exhibit to a group of Graceland pupils",
+        caption: "Learning about ancient rock art on our Ghana Month excursion",
+      },
+      {
+        src: "/photos/field-trip-museum/ghana-map.jpg",
+        alt: "Pupils looking closely at a map exhibit at the Ghana National Museum",
+        caption: "Tracing Ghana's history on the museum's regional map",
+      },
+      {
+        src: "/photos/field-trip-museum/group-outdoor.jpg",
+        alt: "Graceland pupils and staff posing together outside the Ghana National Museum",
+        caption: "The whole group outside the museum after a morning of exploring",
+      },
+    ],
   },
 ];
 
@@ -45,9 +73,19 @@ export default function GalleryPage() {
           <section key={album.title}>
             <SectionHeading title={album.title} />
             <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
-              {album.items.map((item) => (
-                <PhotoPlaceholder key={item} label={item} aspect="aspect-square" />
-              ))}
+              {album.items.map((item) =>
+                typeof item === "string" ? (
+                  <PhotoPlaceholder key={item} label={item} aspect="aspect-square" />
+                ) : (
+                  <Photo
+                    key={item.src}
+                    src={item.src}
+                    alt={item.alt}
+                    aspect="aspect-square"
+                    sizes="(min-width: 640px) 25vw, 50vw"
+                  />
+                )
+              )}
             </div>
           </section>
         ))}
