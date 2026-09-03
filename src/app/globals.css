@@ -1,0 +1,70 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/plus-jakarta-sans";
+
+:root {
+  --background: #fffdf8;
+  --foreground: #1c2521;
+
+  /* Brand: emerald green, matched to the school's internal system */
+  --color-brand-50: #eefaf3;
+  --color-brand-100: #d6f3e2;
+  --color-brand-200: #b0e6c9;
+  --color-brand-300: #7dd3aa;
+  --color-brand-400: #48b986;
+  --color-brand-500: #269e6c;
+  --color-brand-600: #187f56;
+  --color-brand-700: #146547;
+  --color-brand-800: #12503a;
+  --color-brand-900: #0f4231;
+  --color-brand-950: #08251b;
+
+  /* Warm accent for a friendly, early-years feel alongside the brand green */
+  --color-sun-50: #fff9ec;
+  --color-sun-100: #ffefc7;
+  --color-sun-300: #ffd166;
+  --color-sun-500: #f2a900;
+  --color-sun-600: #c98600;
+
+  --color-cream: #fffdf8;
+  --color-ink: #1c2521;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-brand-50: var(--color-brand-50);
+  --color-brand-100: var(--color-brand-100);
+  --color-brand-200: var(--color-brand-200);
+  --color-brand-300: var(--color-brand-300);
+  --color-brand-400: var(--color-brand-400);
+  --color-brand-500: var(--color-brand-500);
+  --color-brand-600: var(--color-brand-600);
+  --color-brand-700: var(--color-brand-700);
+  --color-brand-800: var(--color-brand-800);
+  --color-brand-900: var(--color-brand-900);
+  --color-brand-950: var(--color-brand-950);
+
+  --color-sun-50: var(--color-sun-50);
+  --color-sun-100: var(--color-sun-100);
+  --color-sun-300: var(--color-sun-300);
+  --color-sun-500: var(--color-sun-500);
+  --color-sun-600: var(--color-sun-600);
+
+  --color-cream: var(--color-cream);
+  --color-ink: var(--color-ink);
+
+  --font-heading: "Plus Jakarta Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: var(--font-heading);
+}

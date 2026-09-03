@@ -1,0 +1,82 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { PhotoPlaceholder } from "@/components/photo-placeholder";
+import { getAllPosts, getPostBySlug } from "@/lib/posts";
+import { school } from "@/lib/content";
+
+export async function generateStaticParams() {
+  return getAllPosts().map((post) => ({ slug: post.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
+  if (!post) return { title: `Blog — ${school.name}` };
+  return {
+    title: `${post.title} — ${school.name} Blog`,
+    description: post.excerpt,
+  };
+}
+
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
+  if (!post) notFound();
+
+  return (
+    <article className="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-24">
+      <Link href="/blog" className="block text-sm font-medium text-brand-700 hover:underline">
+        ← All posts
+      </Link>
+
+      <span className="mt-6 block text-xs font-semibold uppercase tracking-wide text-sun-600">
+        {post.category}
+      </span>
+      <h1 className="mt-2 font-heading text-3xl font-bold tracking-tight text-brand-950 sm:text-4xl">
+        {post.title}
+      </h1>
+      <p className="mt-3 text-sm text-ink/50">
+        {new Date(post.publishedAt).toLocaleDateString("en-GB", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })}{" "}
+        · {post.author}
+      </p>
+
+      <PhotoPlaceholder
+        label={`${post.title} photo`}
+        aspect="aspect-[16/9]"
+        className="mt-8 shadow-lg shadow-brand-900/10"
+      />
+
+      <div className="prose-graceland mt-8 space-y-5">
+        {post.body.map((paragraph, i) => (
+          <p key={i} className="text-base leading-relaxed text-ink/80">
+            {paragraph}
+          </p>
+        ))}
+      </div>
+
+      <div className="mt-12 rounded-2xl border border-brand-100 bg-brand-50 p-6 text-center">
+        <p className="font-heading text-base font-bold text-brand-950">
+          Curious about Graceland?
+        </p>
+        <Link
+          href="/admissions"
+          className="mt-3 inline-block rounded-full bg-brand-600 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-700"
+        >
+          Book a Visit
+        </Link>
+      </div>
+    </article>
+  );
+}
