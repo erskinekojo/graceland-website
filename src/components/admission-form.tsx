@@ -1,8 +1,14 @@
 "use client";
 
-import { useActionState } from "react";
-import { submitInquiry, type InquiryState } from "@/app/admissions/actions";
+import { useState, type FormEvent } from "react";
+import { sendToWeb3Forms } from "@/lib/web3forms";
 import { programmes } from "@/lib/content";
+
+type InquiryState = {
+  status: "idle" | "success" | "error";
+  message?: string;
+  fieldErrors?: Record<string, string>;
+};
 
 const initialState: InquiryState = { status: "idle" };
 
@@ -12,7 +18,78 @@ function FieldError({ message }: { message?: string }) {
 }
 
 export function AdmissionForm() {
-  const [state, formAction, pending] = useActionState(submitInquiry, initialState);
+  const [state, setState] = useState<InquiryState>(initialState);
+  const [pending, setPending] = useState(false);
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+
+    const parentName = String(formData.get("parentName") || "").trim();
+    const email = String(formData.get("email") || "").trim();
+    const phone = String(formData.get("phone") || "").trim();
+    const childName = String(formData.get("childName") || "").trim();
+    const childAge = String(formData.get("childAge") || "").trim();
+    const programmeInterest = String(formData.get("programmeInterest") || "").trim();
+    const message = String(formData.get("message") || "").trim();
+    // Honeypot field — real users never fill this in.
+    const website = String(formData.get("website") || "").trim();
+
+    const fieldErrors: Record<string, string> = {};
+    if (!parentName) fieldErrors.parentName = "Please tell us your name.";
+    if (!email && !phone) {
+      fieldErrors.email = "Please leave an email or phone number so we can reach you.";
+    }
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      fieldErrors.email = "That email address doesn't look right.";
+    }
+    if (!childAge) fieldErrors.childAge = "Please share your child's age.";
+    if (programmeInterest && !programmes.some((p) => p.slug === programmeInterest)) {
+      fieldErrors.programmeInterest = "Please choose a valid programme.";
+    }
+
+    if (Object.keys(fieldErrors).length > 0) {
+      setState({ status: "error", message: "Please check the highlighted fields.", fieldErrors });
+      return;
+    }
+
+    if (website) {
+      // Honeypot tripped — silently pretend success, drop the submission.
+      setState({ status: "success", message: "Thank you — we'll be in touch soon." });
+      return;
+    }
+
+    const programmeLabel =
+      programmes.find((p) => p.slug === programmeInterest)?.name || programmeInterest || null;
+
+    setPending(true);
+    try {
+      await sendToWeb3Forms("New admissions inquiry", {
+        "Parent name": parentName,
+        Email: email || "(not provided)",
+        Phone: phone || "(not provided)",
+        "Child's name": childName || "(not provided)",
+        "Child's age": childAge,
+        "Programme interest": programmeLabel || "(not specified)",
+        Message: message || "(none)",
+        "Submitted at": new Date().toISOString(),
+      });
+      setState({
+        status: "success",
+        message:
+          "Thank you! We've received your inquiry and will be in touch within 1–2 working days.",
+      });
+    } catch (err) {
+      console.error("Admissions form delivery failed:", err);
+      setState({
+        status: "error",
+        message:
+          "Sorry — something went wrong sending your inquiry. Please call or email us directly.",
+      });
+    } finally {
+      setPending(false);
+    }
+  }
 
   if (state.status === "success") {
     return (
@@ -31,7 +108,7 @@ export function AdmissionForm() {
   }
 
   return (
-    <form action={formAction} className="space-y-5" noValidate>
+    <form onSubmit={handleSubmit} className="space-y-5" noValidate>
       {/* Honeypot — hidden from real visitors, catches simple bots */}
       <div className="hidden" aria-hidden="true">
         <label>

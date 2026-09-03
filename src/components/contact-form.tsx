@@ -1,12 +1,67 @@
 "use client";
 
-import { useActionState } from "react";
-import { submitContactMessage, type ContactState } from "@/app/contact/actions";
+import { useState, type FormEvent } from "react";
+import { sendToWeb3Forms } from "@/lib/web3forms";
+
+type ContactState = {
+  status: "idle" | "success" | "error";
+  message?: string;
+  fieldErrors?: Record<string, string>;
+};
 
 const initialState: ContactState = { status: "idle" };
 
 export function ContactForm() {
-  const [state, formAction, pending] = useActionState(submitContactMessage, initialState);
+  const [state, setState] = useState<ContactState>(initialState);
+  const [pending, setPending] = useState(false);
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+
+    const name = String(formData.get("name") || "").trim();
+    const email = String(formData.get("email") || "").trim();
+    const message = String(formData.get("message") || "").trim();
+    // Honeypot field — real users never fill this in.
+    const website = String(formData.get("website") || "").trim();
+
+    const fieldErrors: Record<string, string> = {};
+    if (!name) fieldErrors.name = "Please tell us your name.";
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      fieldErrors.email = "Please enter a valid email address.";
+    }
+    if (!message) fieldErrors.message = "Please add a short message.";
+
+    if (Object.keys(fieldErrors).length > 0) {
+      setState({ status: "error", message: "Please check the highlighted fields.", fieldErrors });
+      return;
+    }
+
+    if (website) {
+      // Honeypot tripped — silently pretend success, drop the submission.
+      setState({ status: "success", message: "Thank you — we'll be in touch soon." });
+      return;
+    }
+
+    setPending(true);
+    try {
+      await sendToWeb3Forms("New contact message", {
+        Name: name,
+        Email: email,
+        Message: message,
+        "Submitted at": new Date().toISOString(),
+      });
+      setState({ status: "success", message: "Thank you! We've received your message." });
+    } catch (err) {
+      console.error("Contact form delivery failed:", err);
+      setState({
+        status: "error",
+        message: "Sorry — something went wrong. Please call or email us directly.",
+      });
+    } finally {
+      setPending(false);
+    }
+  }
 
   if (state.status === "success") {
     return (
@@ -18,7 +73,7 @@ export function ContactForm() {
   }
 
   return (
-    <form action={formAction} className="space-y-5" noValidate>
+    <form onSubmit={handleSubmit} className="space-y-5" noValidate>
       <div className="hidden" aria-hidden="true">
         <label>
           Website

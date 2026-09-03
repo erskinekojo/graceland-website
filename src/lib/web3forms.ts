@@ -2,16 +2,22 @@
  * Delivers form submissions to the school's inbox via Web3Forms
  * (https://web3forms.com) — a free, no-backend form-delivery service.
  *
- * Requires WEB3FORMS_ACCESS_KEY to be set (get one free at web3forms.com by
- * entering the destination email address — no account/card required).
- * Without it configured, callers should fall back to logging server-side
- * (see admissions/actions.ts and contact/actions.ts) so nothing crashes in
- * local development or before the key is set up.
+ * IMPORTANT: this runs client-side, in the visitor's browser. Web3Forms's
+ * free tier only accepts submissions posted directly from a browser — it
+ * rejects server-to-server calls (e.g. from a Next.js Server Action) with
+ * "This method is not allowed... Pro plan is required". So the access key
+ * here is NEXT_PUBLIC_ on purpose: Web3Forms's own docs treat it as a
+ * public, rate-/domain-restricted "form ID", not a secret — it ends up in
+ * the browser bundle regardless of what env-var prefix is used, since the
+ * request has to originate from the browser either way.
+ *
+ * Requires NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY to be set (get one free at
+ * web3forms.com by entering the destination email address — no
+ * account/card required, but you must click the confirmation link
+ * Web3Forms emails you before the key will accept submissions).
  *
  * This is a placeholder for the eventual internal school-management system
- * integration described in the README — swapping this file's contents for
- * a direct authenticated call into that system is the intended upgrade
- * path, and no page/component needs to change when that happens.
+ * integration described in the README.
  */
 
 type Web3FormsFields = Record<string, string | null | undefined>;
@@ -20,9 +26,9 @@ export async function sendToWeb3Forms(
   subject: string,
   fields: Web3FormsFields
 ): Promise<void> {
-  const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
+  const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
   if (!accessKey) {
-    throw new Error("WEB3FORMS_ACCESS_KEY is not set");
+    throw new Error("NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY is not set");
   }
 
   const replyTo = fields.email || undefined;
