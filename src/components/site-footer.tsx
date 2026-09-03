@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { contact, nav, school } from "@/lib/content";
 
@@ -7,9 +8,13 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-[1.3fr_1fr_1fr]">
         <div>
           <div className="flex items-center gap-2.5">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-500 font-heading text-base font-bold text-white">
-              G
-            </span>
+            <Image
+              src="/logo.png"
+              alt={`${school.name} crest`}
+              width={40}
+              height={40}
+              className="h-10 w-10"
+            />
             <span className="font-heading text-base font-bold text-white">
               {school.name}
             </span>

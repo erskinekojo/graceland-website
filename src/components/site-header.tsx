@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { nav, school } from "@/lib/content";
+import { nav, portalLoginUrl, school } from "@/lib/content";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -11,9 +12,14 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-brand-100 bg-cream/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3 sm:px-8">
         <Link href="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
-          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-600 font-heading text-lg font-bold text-white">
-            G
-          </span>
+          <Image
+            src="/logo.png"
+            alt={`${school.name} crest`}
+            width={44}
+            height={44}
+            priority
+            className="h-11 w-11"
+          />
           <span className="flex flex-col leading-tight">
             <span className="font-heading text-base font-bold text-brand-900">
               {school.shortName}
@@ -34,12 +40,20 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <Link
-          href="/admissions"
-          className="hidden rounded-full bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700 md:inline-block"
-        >
-          Book a Visit
-        </Link>
+        <div className="hidden items-center gap-5 md:flex">
+          <a
+            href={portalLoginUrl}
+            className="text-sm font-medium text-ink/70 transition hover:text-brand-700"
+          >
+            Login
+          </a>
+          <Link
+            href="/admissions"
+            className="rounded-full bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700"
+          >
+            Book a Visit
+          </Link>
+        </div>
 
         <button
           type="button"
@@ -74,6 +88,13 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
+            <a
+              href={portalLoginUrl}
+              onClick={() => setOpen(false)}
+              className="rounded-lg px-3 py-2.5 text-sm font-medium text-ink/85 hover:bg-brand-50 hover:text-brand-800"
+            >
+              Login
+            </a>
             <Link
               href="/admissions"
               onClick={() => setOpen(false)}
