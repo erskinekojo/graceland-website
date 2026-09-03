@@ -133,11 +133,16 @@ export const posts: Post[] = [
     author: "Graceland Montessori",
     category: "Competitions",
     heroImage: {
-      src: "/photos/inter-school-abacus-competition/assembly-abacus.jpg",
-      alt: "Graceland pupils seated with abacus tools during the opening assembly, in front of a 'welcome back to school' mural",
-      caption: "Pupils with their abacus tools at the opening assembly",
+      src: "/photos/inter-school-abacus-competition/abacus-focus.jpg",
+      alt: "A Graceland pupil concentrating closely while using an abacus tool during the competition",
+      caption: "Deep concentration during the competition",
     },
     gallery: [
+      {
+        src: "/photos/inter-school-abacus-competition/assembly-abacus.jpg",
+        alt: "Graceland pupils seated with abacus tools during the opening assembly, in front of a 'welcome back to school' mural",
+        caption: "Pupils with their abacus tools at the opening assembly",
+      },
       {
         src: "/photos/inter-school-abacus-competition/speaking-mic.jpg",
         alt: "A Graceland pupil speaking into a microphone alongside classmates during the assembly",
@@ -152,11 +157,6 @@ export const posts: Post[] = [
         src: "/photos/inter-school-abacus-competition/abacus-group-desk.jpg",
         alt: "Three Graceland pupils working through mental-maths problems together with abacus tools at a desk",
         caption: "Working through the rounds together",
-      },
-      {
-        src: "/photos/inter-school-abacus-competition/abacus-focus.jpg",
-        alt: "A Graceland pupil concentrating closely while using an abacus tool",
-        caption: "Deep concentration during the competition",
       },
       {
         src: "/photos/inter-school-abacus-competition/kente-dance.jpg",
