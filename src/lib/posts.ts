@@ -284,6 +284,63 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "carols-day-celebration",
+    title: "Carols Day: a morning of song, dance, and nativity",
+    excerpt:
+      "Our pupils marked the end of term with Carols Day — a stage full of song, dance, and a nativity performance for parents and the whole school community.",
+    body: [
+      "To close out the term, Graceland pupils traded their usual uniforms for their Christmas best — white outfits topped with festive red, green, and gold headbands — for our annual Carols Day celebration.",
+      "The morning opened with the whole school gathered under the Graceland Montessori backdrop, singing carols together before pupils took turns leading songs into the microphone, hands raised and voices loud, with parents and staff singing right along.",
+      "The highlight of the morning was a nativity performance, with our youngest pupils taking the stage in kente-wrapped costumes, cradling baby dolls as they retold the Christmas story for a courtyard full of proud parents and grandparents.",
+      "Between performances there was dancing, laughter, and no shortage of camera phones capturing it all — exactly the warm, joyful send-off we hope for as pupils head into the holidays.",
+    ],
+    publishedAt: "2025-12-18",
+    author: "Graceland Montessori",
+    category: "Events",
+    heroImage: {
+      src: "/photos/carols-day-celebration/stage-dance-backdrop.jpg",
+      alt: "Graceland pupils dancing on stage in front of a Christmas-themed Graceland Montessori backdrop with balloon arches",
+      caption: "On stage for Carols Day, in front of our Christmas backdrop",
+    },
+    gallery: [
+      {
+        src: "/photos/carols-day-celebration/singing-into-mic.jpg",
+        alt: "Graceland pupils singing energetically into a microphone on stage",
+        caption: "Leading the carols, one verse at a time",
+      },
+      {
+        src: "/photos/carols-day-celebration/nativity-skit-balloons.jpg",
+        alt: "Pupils performing a nativity-style skit on a stage decorated with balloon arches",
+        caption: "A nativity performance for the whole school community",
+      },
+      {
+        src: "/photos/carols-day-celebration/nativity-dolls-kente.jpg",
+        alt: "Two young pupils in kente-wrapped costumes holding baby dolls during the nativity performance",
+        caption: "Retelling the Christmas story, kente cloth and all",
+      },
+      {
+        src: "/photos/carols-day-celebration/toddlers-walking-line.jpg",
+        alt: "A line of toddlers in white dresses walking together at the Carols Day celebration",
+        caption: "Our youngest pupils in their Christmas best",
+      },
+      {
+        src: "/photos/carols-day-celebration/choir-mother-baby.jpg",
+        alt: "Pupils singing together as a parent holds a baby nearby",
+        caption: "A family affair — parents and little ones joined right in",
+      },
+      {
+        src: "/photos/carols-day-celebration/prayer-hands-closeup.jpg",
+        alt: "Close-up of a young pupil in a white outfit and bow tie, smiling with hands clasped together",
+        caption: "All smiles in Christmas best",
+      },
+      {
+        src: "/photos/carols-day-celebration/dance-motion.jpg",
+        alt: "Pupils dancing energetically on stage during the Carols Day celebration",
+        caption: "Dancing the morning away",
+      },
+    ],
+  },
 ];
 
 export function getAllPosts(): Post[] {

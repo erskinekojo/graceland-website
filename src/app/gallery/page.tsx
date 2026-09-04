@@ -55,6 +55,21 @@ const albums: { title: string; items: AlbumItem[] }[] = [
         alt: "A young Graceland pupil raising the competition trophy overhead",
         caption: "Trophy raised high to close out the day",
       },
+      {
+        src: "/photos/carols-day-celebration/stage-dance-backdrop.jpg",
+        alt: "Graceland pupils dancing on stage in front of a Christmas-themed Graceland Montessori backdrop with balloon arches",
+        caption: "On stage for Carols Day",
+      },
+      {
+        src: "/photos/carols-day-celebration/nativity-skit-balloons.jpg",
+        alt: "Pupils performing a nativity-style skit on a stage decorated with balloon arches",
+        caption: "A nativity performance for the whole school community",
+      },
+      {
+        src: "/photos/carols-day-celebration/toddlers-walking-line.jpg",
+        alt: "A line of toddlers in white dresses walking together at the Carols Day celebration",
+        caption: "Our youngest pupils in their Christmas best",
+      },
     ],
   },
   {
