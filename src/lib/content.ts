@@ -24,6 +24,12 @@ export type Programme = {
 // Points at the "portal" subdomain seen in DNS — update here if that changes.
 export const portalLoginUrl = "https://my.gracelandmontessori.com/admin";
 
+// The portal's public events feed — read-only, unauthenticated, CORS-open.
+// Only events staff have explicitly flagged `visibleOnWebsite` show up here,
+// so no shared secret is needed the way the admissions/contact forms use one.
+export const portalEventsApiUrl = "https://my.gracelandmontessori.com/api/public/events";
+export const portalEventsIcsUrl = "https://my.gracelandmontessori.com/api/public/events.ics";
+
 // The site's canonical production URL — used for absolute links (share
 // buttons, Open Graph metadata) that need a full URL rather than a path.
 export const siteUrl = "https://www.gracelandmontessori.com";
@@ -239,6 +245,7 @@ export const nav = [
   { label: "Programmes", href: "/programmes" },
   { label: "Admissions", href: "/admissions" },
   { label: "Gallery", href: "/gallery" },
+  { label: "Events", href: "/events" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
