@@ -22,7 +22,7 @@ export default function AboutPage() {
             About Graceland
           </span>
           <h1 className="mt-3 font-heading text-4xl font-bold tracking-tight text-brand-950 sm:text-5xl">
-            A Montessori education, grounded in grace
+            Montessori roots, a grade school journey
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-ink/70">
             {school.heroSubhead}
@@ -138,7 +138,8 @@ export default function AboutPage() {
             See our programmes for every age
           </h2>
           <p className="max-w-xl text-brand-100/90">
-            From Toddler Community to Upper Primary, one connected Montessori journey.
+            From Toddler Community to Upper Primary, one connected journey — Montessori roots
+            growing into a full grade school experience.
           </p>
           <Link
             href="/programmes"

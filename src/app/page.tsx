@@ -38,7 +38,7 @@ export default function Home() {
                 href="/about"
                 className="rounded-full border border-brand-200 bg-white px-7 py-3.5 text-sm font-semibold text-brand-800 transition hover:border-brand-300 hover:bg-brand-50"
               >
-                Our Montessori Approach
+                Our Approach
               </Link>
             </div>
             <p className="mt-4 text-sm italic text-brand-700/70">
@@ -54,7 +54,7 @@ export default function Home() {
             />
             <div className="absolute -bottom-6 -left-6 hidden w-52 rounded-2xl bg-white p-4 shadow-lg shadow-brand-900/10 ring-1 ring-brand-100 sm:block">
               <p className="font-heading text-2xl font-bold text-brand-700">1–12</p>
-              <p className="text-xs text-ink/60">years old, one continuous Montessori journey</p>
+              <p className="text-xs text-ink/60">years old, one connected school journey</p>
             </div>
           </div>
         </div>
@@ -125,7 +125,7 @@ export default function Home() {
           <SectionHeading
             kicker="Programmes"
             title="One school, every age from toddler to Upper Primary"
-            description="Children move through a connected Montessori journey — the same calm, prepared approach, growing with them at every stage."
+            description="Children move through one connected journey — Montessori foundations in the early years, growing into a full grade school experience by Upper Primary."
           />
           <Link
             href="/programmes"
@@ -201,10 +201,10 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-5 pb-16 sm:px-8 sm:pb-24">
         <div className="flex flex-col items-center gap-6 rounded-3xl bg-gradient-to-br from-brand-700 to-brand-900 px-6 py-14 text-center text-white sm:px-16">
           <h2 className="font-heading text-3xl font-bold sm:text-4xl">
-            Come see a Graceland classroom for yourself
+            Come see Graceland for yourself
           </h2>
           <p className="max-w-xl text-brand-100/85">
-            The best way to understand Montessori is to watch it in action. Book a visit and
+            The best way to understand our approach is to meet us in person. Book a visit and
             we&apos;ll show you around, introduce you to our teachers, and answer every question.
           </p>
           <div className="flex flex-wrap justify-center gap-4">

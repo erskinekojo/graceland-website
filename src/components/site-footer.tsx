@@ -20,8 +20,8 @@ export function SiteFooter() {
             </span>
           </div>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-brand-100/80">
-            {school.tagline}. A Montessori education for children 1–12 in
-            East La (Tse Addo), Accra.
+            {school.tagline}. A Montessori foundation and grade school journey for children
+            1–12 in East La (Tse Addo), Accra.
           </p>
         </div>
 

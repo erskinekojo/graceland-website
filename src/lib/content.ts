@@ -32,10 +32,10 @@ export const school = {
   name: "Graceland Montessori",
   shortName: "Graceland",
   tagline: "Grace to prepare for Excellence",
-  heroKicker: "A Montessori education in Accra",
+  heroKicker: "A Montessori & grade school journey in Accra",
   heroHeadline: "Where curiosity becomes confidence.",
   heroSubhead:
-    "Graceland Montessori is a warm, child-centred school in East La (Tse Addo), Accra, guiding children from 1 to 12 years through a hands-on Montessori education — at their own pace, in their own time.",
+    "Graceland Montessori is a warm, child-centred school in East La (Tse Addo), Accra, guiding children from 1 to 12 years on one connected journey — hands-on Montessori foundations that grow into a full grade school experience, at their own pace, in their own time.",
   mission:
     "Our mission is to provide a safe, supportive, and stimulating learning environment where every child is encouraged to explore, discover, and grow.",
   vision:

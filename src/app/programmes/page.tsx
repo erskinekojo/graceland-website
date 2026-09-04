@@ -5,10 +5,10 @@ import { programmes, schedule, school } from "@/lib/content";
 
 export const metadata = {
   title: `Programmes — ${school.name}`,
-  description: "Montessori programmes for children 1–12 years at Graceland Montessori.",
+  description: "Montessori and grade school programmes for children 1–12 years at Graceland Montessori.",
   openGraph: {
     title: `Programmes — ${school.name}`,
-    description: "Montessori programmes for children 1–12 years at Graceland Montessori.",
+    description: "Montessori and grade school programmes for children 1–12 years at Graceland Montessori.",
     url: "/programmes",
   },
 };
@@ -25,8 +25,9 @@ export default function ProgrammesPage() {
             One school, one journey, every age
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-ink/70">
-            Children move through four connected Montessori communities as they grow, each one
-            building on the last. All programmes run {schedule.days}, {schedule.hours}.
+            Children move through four connected communities as they grow — Montessori
+            foundations in the early years, growing into a full grade school journey by Upper
+            Primary. All programmes run {schedule.days}, {schedule.hours}.
           </p>
         </div>
       </section>
