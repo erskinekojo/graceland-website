@@ -139,12 +139,6 @@ export const contact = {
   mapQuery: "HVR5+45 Accra",
 };
 
-export const events = [
-  { name: "Open Day", date: "2026-04-20" },
-  { name: "Sports Day", date: "2026-05-08" },
-  { name: "End of Term Exams", date: "2026-07-17" },
-];
-
 export const staff = [
   {
     name: "Francisca Coffie",

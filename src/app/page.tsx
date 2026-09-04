@@ -2,7 +2,8 @@ import Link from "next/link";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { ProgrammeCard } from "@/components/programme-card";
 import { SectionHeading } from "@/components/section-heading";
-import { events, programmes, school, schedule } from "@/lib/content";
+import { programmes, school, schedule } from "@/lib/content";
+import { getUpcomingEvents } from "@/lib/events";
 
 const stats = [
   { value: "1–12", label: "years old, one school journey" },
@@ -11,7 +12,10 @@ const stats = [
   { value: "East La", label: "Accra, Ghana" },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const { events } = await getUpcomingEvents();
+  const nextEvents = events.slice(0, 3);
+
   return (
     <>
       {/* Hero */}
@@ -165,37 +169,47 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Events strip */}
-      <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
-        <SectionHeading kicker="What's coming up" title="Upcoming school events" />
-        <div className="mt-8 grid gap-4 sm:grid-cols-3">
-          {events.map((e) => (
-            <div
-              key={e.name}
-              className="flex items-center gap-4 rounded-2xl border border-brand-100 bg-white p-5"
+      {/* Events strip — only shown once there's something real to show */}
+      {nextEvents.length > 0 && (
+        <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
+          <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
+            <SectionHeading kicker="What's coming up" title="Upcoming school events" />
+            <Link
+              href="/events"
+              className="whitespace-nowrap text-sm font-semibold text-brand-700 hover:text-brand-800"
             >
-              <div className="flex h-14 w-14 flex-none flex-col items-center justify-center rounded-xl bg-brand-600 text-white">
-                <span className="text-[10px] font-semibold uppercase tracking-wide">
-                  {new Date(e.date).toLocaleDateString("en-GB", { month: "short" })}
-                </span>
-                <span className="font-heading text-lg font-bold leading-none">
-                  {new Date(e.date).getDate()}
-                </span>
+              View all events →
+            </Link>
+          </div>
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            {nextEvents.map((e) => (
+              <div
+                key={e.id}
+                className="flex items-center gap-4 rounded-2xl border border-brand-100 bg-white p-5"
+              >
+                <div className="flex h-14 w-14 flex-none flex-col items-center justify-center rounded-xl bg-brand-600 text-white">
+                  <span className="text-[10px] font-semibold uppercase tracking-wide">
+                    {new Date(e.date).toLocaleDateString("en-GB", { month: "short" })}
+                  </span>
+                  <span className="font-heading text-lg font-bold leading-none">
+                    {new Date(e.date).getDate()}
+                  </span>
+                </div>
+                <div>
+                  <p className="font-heading text-sm font-bold text-brand-950">{e.title}</p>
+                  <p className="text-xs text-ink/60">
+                    {new Date(e.date).toLocaleDateString("en-GB", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </p>
+                </div>
               </div>
-              <div>
-                <p className="font-heading text-sm font-bold text-brand-950">{e.name}</p>
-                <p className="text-xs text-ink/60">
-                  {new Date(e.date).toLocaleDateString("en-GB", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Final CTA */}
       <section className="mx-auto max-w-6xl px-5 pb-16 sm:px-8 sm:pb-24">

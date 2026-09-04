@@ -1,4 +1,5 @@
-import { school, portalEventsApiUrl, portalEventsIcsUrl } from "@/lib/content";
+import { school, portalEventsIcsUrl } from "@/lib/content";
+import { formatEventDate, formatEventTime, getUpcomingEvents } from "@/lib/events";
 
 export const metadata = {
   title: `Events — ${school.name}`,
@@ -9,48 +10,6 @@ export const metadata = {
     url: "/events",
   },
 };
-
-type PortalEvent = {
-  id: number;
-  title: string;
-  date: string;
-  time: string | null;
-  description: string | null;
-  disclaimer: string | null;
-};
-
-async function getUpcomingEvents(): Promise<{ events: PortalEvent[]; error: boolean }> {
-  try {
-    const res = await fetch(portalEventsApiUrl, {
-      // Revalidate hourly — this is a low-traffic feed staff update occasionally,
-      // not something that needs to be instant on the marketing site.
-      next: { revalidate: 3600 },
-    });
-    if (!res.ok) return { events: [], error: true };
-    const events = (await res.json()) as PortalEvent[];
-    return { events, error: false };
-  } catch {
-    // The portal is a separate deployment — don't let it being unreachable
-    // break the marketing site's build or this page.
-    return { events: [], error: true };
-  }
-}
-
-function formatEventDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString("en-GB", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-}
-
-function formatEventTime(timeStr: string) {
-  const [hours, minutes] = timeStr.split(":").map(Number);
-  const date = new Date();
-  date.setHours(hours, minutes);
-  return date.toLocaleTimeString("en-GB", { hour: "numeric", minute: "2-digit" });
-}
 
 export default async function EventsPage() {
   const { events, error } = await getUpcomingEvents();
