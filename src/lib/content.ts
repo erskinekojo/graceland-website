@@ -196,7 +196,7 @@ export const admissionsSteps = [
     step: "2",
     title: "Book a visit",
     description:
-      "We'll invite you to tour the school, meet the teachers, and see a Montessori classroom in session.",
+      "We'll invite you in to tour the school, meet the teachers, and talk through what a day at Graceland looks like for your child.",
   },
   {
     step: "3",
