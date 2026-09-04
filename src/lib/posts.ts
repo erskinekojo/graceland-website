@@ -341,6 +341,52 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "pta-one-on-one-consultations",
+    title: "PTA one-on-one consultations: parents and teachers, together",
+    excerpt:
+      "We opened our doors for one-on-one PTA consultations, giving every parent a chance to sit down with their child's teacher and talk through progress face to face.",
+    body: [
+      "This term we held one-on-one PTA consultations, giving every parent a dedicated slot to sit down with their child's teacher and go through how their child is doing — academically, socially, and everything in between.",
+      "Teachers walked parents through notebooks, assessments, and day-to-day observations from the classroom, and parents brought their own questions and observations from home. Many came with their children in tow, so the conversation happened with everyone at the table.",
+      "It's a format we value precisely because it's personal — a shared report card session doesn't give you the same space for the specific, sometimes small things that make the biggest difference to a child's term. Thank you to every parent who made the time to come in.",
+    ],
+    publishedAt: "2026-07-15",
+    author: "Graceland Montessori",
+    category: "School News",
+    heroImage: {
+      src: "/photos/pta-one-on-one/teacher-parent-consultation.jpg",
+      alt: "A teacher speaking with a parent and her son during a one-on-one PTA consultation",
+      caption: "A one-on-one consultation between a teacher and parent",
+    },
+    gallery: [
+      {
+        src: "/photos/pta-one-on-one/hijab-parent-reviewing-report.jpg",
+        alt: "Staff reviewing a report with a parent at a desk",
+        caption: "Going through the term's progress together",
+      },
+      {
+        src: "/photos/pta-one-on-one/father-son-teacher-discussion.jpg",
+        alt: "A teacher discussing a pupil's notebook with a father and his son",
+        caption: "A father and son going through the term's work with a teacher",
+      },
+      {
+        src: "/photos/pta-one-on-one/teacher-girl-notebooks.jpg",
+        alt: "A teacher going through a stack of notebooks with a pupil and a parent nearby",
+        caption: "Notebooks and assessments on the table for every consultation",
+      },
+      {
+        src: "/photos/pta-one-on-one/officer-teacher-parent-greeting.jpg",
+        alt: "A parent in uniform being welcomed by staff for her consultation",
+        caption: "Parents from all walks of life came through for their consultations",
+      },
+      {
+        src: "/photos/pta-one-on-one/officer-parent-peace-sign.jpg",
+        alt: "A smiling pupil making a peace sign next to his parent",
+        caption: "All smiles after a good conversation about the term",
+      },
+    ],
+  },
 ];
 
 export function getAllPosts(): Post[] {

@@ -30,7 +30,26 @@ const albums: { title: string; items: AlbumItem[] }[] = [
   },
   {
     title: "Around the school",
-    items: ["Outdoor play", "Garden & nature area", "Lunchtime", "Assembly"],
+    items: [
+      "Outdoor play",
+      "Garden & nature area",
+      "Lunchtime",
+      {
+        src: "/photos/pta-one-on-one/teacher-parent-consultation.jpg",
+        alt: "A teacher speaking with a parent and her son during a one-on-one PTA consultation",
+        caption: "One-on-one PTA consultations between parents and teachers",
+      },
+      {
+        src: "/photos/pta-one-on-one/father-son-teacher-discussion.jpg",
+        alt: "A teacher discussing a pupil's notebook with a father and his son",
+        caption: "Going through the term's work together",
+      },
+      {
+        src: "/photos/pta-one-on-one/officer-parent-peace-sign.jpg",
+        alt: "A smiling pupil making a peace sign next to his parent",
+        caption: "All smiles after a good conversation about the term",
+      },
+    ],
   },
   {
     title: "Events",
