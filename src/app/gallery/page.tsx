@@ -89,6 +89,21 @@ const albums: { title: string; items: AlbumItem[] }[] = [
         alt: "A line of toddlers in white dresses walking together at the Carols Day celebration",
         caption: "Our youngest pupils in their Christmas best",
       },
+      {
+        src: "/photos/graduation-day/stage-jump-celebration.jpg",
+        alt: "Two pupils running and jumping across the stage in front of the Speech, Prizes & Award Ceremony banner",
+        caption: "Taking the stage on Graduation Day",
+      },
+      {
+        src: "/photos/graduation-day/graduate-adjusting-cap.jpg",
+        alt: "A graduating pupil in a blue cap and gown with a kente stole, adjusting his graduation cap",
+        caption: "Cap, gown, and kente stole for the Class of 2026",
+      },
+      {
+        src: "/photos/graduation-day/kente-dance-duo.jpg",
+        alt: "Two pupils performing a dance in kente cloth on stage",
+        caption: "A kente dance performance for the crowd",
+      },
     ],
   },
   {

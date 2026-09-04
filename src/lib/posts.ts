@@ -387,6 +387,58 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "graduation-day-2026",
+    title: "Graduation Day: Speech, Prizes & Award Ceremony",
+    excerpt:
+      "Our Class of 2026 graduated in style, with a Speech, Prizes & Award Ceremony full of performances, awards, and proud families cheering every child across the stage.",
+    body: [
+      "It's one of the biggest days on the Graceland calendar — our Speech, Prizes & Award Ceremony, where our graduating class crossed the stage in cap and gown, kente stoles and all, in front of the families and staff who've watched them grow.",
+      "The programme was packed: our youngest pupils opened with song, older pupils took the stage for dance performances in kente and vibrant African print, and there was a steady stream of speeches from staff and guests marking the occasion. Between performances, awards and prizes were handed out to pupils across every class, each one met with applause from a courtyard full of parents and grandparents.",
+      "Off stage, there was just as much going on — popcorn and drinks for the crowd, pupils in their Sunday best posing for photos, and a lot of proud parents capturing it all on their phones.",
+      "Congratulations to our Class of 2026, and thank you to every family who came out to celebrate with us. Today's learners really are tomorrow's world-changers.",
+    ],
+    publishedAt: "2026-07-23",
+    author: "Graceland Montessori",
+    category: "Events",
+    heroImage: {
+      src: "/photos/graduation-day/stage-jump-celebration.jpg",
+      alt: "Two pupils running and jumping across the stage in front of the Speech, Prizes & Award Ceremony banner",
+      caption: "Taking the stage on Graduation Day",
+    },
+    gallery: [
+      {
+        src: "/photos/graduation-day/graduate-adjusting-cap.jpg",
+        alt: "A graduating pupil in a blue cap and gown with a kente stole, adjusting his graduation cap",
+        caption: "Cap, gown, and kente stole for the Class of 2026",
+      },
+      {
+        src: "/photos/graduation-day/speech-kids-dancing.jpg",
+        alt: "A staff member giving a speech at the podium while pupils dance in the background",
+        caption: "Speeches and performances filled the programme",
+      },
+      {
+        src: "/photos/graduation-day/kente-dance-duo.jpg",
+        alt: "Two pupils performing a dance in kente cloth on stage",
+        caption: "A kente dance performance for the crowd",
+      },
+      {
+        src: "/photos/graduation-day/safari-dance-duo.jpg",
+        alt: "Two pupils dancing energetically together in front of the stage",
+        caption: "Dancing between performances",
+      },
+      {
+        src: "/photos/graduation-day/audience-seated.jpg",
+        alt: "Rows of pupils in checkered uniforms seated in the audience",
+        caption: "A full house for the ceremony",
+      },
+      {
+        src: "/photos/graduation-day/refreshments-serving.jpg",
+        alt: "Staff in kente serving popcorn and drinks to families at the event",
+        caption: "Popcorn and drinks kept everyone going",
+      },
+    ],
+  },
 ];
 
 export function getAllPosts(): Post[] {
