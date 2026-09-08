@@ -439,6 +439,58 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "funworld-national-theatre-performance",
+    title: "FUNWORLD at the National Theatre: our pupils take the stage",
+    excerpt:
+      "Our pupils performed at FUNWORLD, an annual children's event hosted by the National Theatre of Ghana — a morning of rehearsal, an afternoon on stage, and a lot of proud smiles.",
+    body: [
+      "This term our pupils had the exciting opportunity to perform at FUNWORLD, an annual children's programme hosted by the National Theatre of Ghana — a full day of music, dance, and performance bringing together pupils from schools across Accra.",
+      "The morning started with rehearsal on the National Theatre's own stage, running through choreography one more time before the real thing. By early afternoon our pupils were back in the auditorium as an audience themselves, taking in the rest of the day's performances between their own turns on stage.",
+      "Then it was showtime — our dancers took their places under the lights and performed in front of a full house, energy and confidence on full display. It's exactly the kind of experience we love for our pupils: a real stage, a real audience, and a chance to shine well beyond the walls of the classroom.",
+      "The day wrapped up with a group photo at the FUNWORLD backdrop, tired but glowing after a day they'll be talking about for a while. Thank you to the National Theatre of Ghana for hosting, and to every pupil who represented Graceland so well on stage.",
+    ],
+    publishedAt: "2026-05-17",
+    author: "Graceland Montessori",
+    category: "Events",
+    heroImage: {
+      src: "/photos/funworld-national-theatre/stage-performance-blue-light.jpg",
+      alt: "Graceland pupils performing a dance routine on the National Theatre stage under blue stage lighting, with a 'FUN WORLD' sign in the background",
+      caption: "On stage under the lights at FUNWORLD",
+    },
+    gallery: [
+      {
+        src: "/photos/funworld-national-theatre/stage-rehearsal-wide.jpg",
+        alt: "Graceland pupils rehearsing a dance routine on the National Theatre stage",
+        caption: "Running through choreography during the morning rehearsal",
+      },
+      {
+        src: "/photos/funworld-national-theatre/stage-rehearsal-arms-raised.jpg",
+        alt: "Graceland pupils dancing with arms raised during rehearsal on stage",
+        caption: "One more run-through before showtime",
+      },
+      {
+        src: "/photos/funworld-national-theatre/audience-boy-with-drink.jpg",
+        alt: "A Graceland pupil sitting in a theatre seat holding a drink, watching the day's performances",
+        caption: "Taking in the rest of the show from the audience",
+      },
+      {
+        src: "/photos/funworld-national-theatre/audience-girl-peace-sign.jpg",
+        alt: "A smiling Graceland pupil making a peace sign from her theatre seat",
+        caption: "All smiles between performances",
+      },
+      {
+        src: "/photos/funworld-national-theatre/group-photo-lobby.jpg",
+        alt: "A large group of Graceland pupils posing together in the National Theatre lobby in front of the FUNWORLD banner",
+        caption: "The whole group together before heading in",
+      },
+      {
+        src: "/photos/funworld-national-theatre/group-photo-backdrop-staff.jpg",
+        alt: "A group of Graceland pupils posing with a staff member in front of the FUNWORLD by National Theatre of Ghana backdrop",
+        caption: "A proud group photo to close out the day",
+      },
+    ],
+  },
 ];
 
 export function getAllPosts(): Post[] {
