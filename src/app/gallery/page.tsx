@@ -32,6 +32,11 @@ const albums: { title: string; items: AlbumItem[] }[] = [
     title: "Around the school",
     items: [
       {
+        src: "/photos/around-the-school/toddlers-ride-on-car-hug.jpg",
+        alt: "Two Graceland toddlers cheek to cheek and smiling together in a ride-on toy car",
+        caption: "Best friends in the play corner",
+      },
+      {
         src: "/photos/around-the-school/soccer-goal-outdoor-play.jpg",
         alt: "Two Graceland pupils sitting together inside a small goal frame on the school's outdoor sports court",
         caption: "Finding new ways to play on the sports court",
