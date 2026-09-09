@@ -31,7 +31,16 @@ const albums: { title: string; items: AlbumItem[] }[] = [
   {
     title: "Around the school",
     items: [
-      "Outdoor play",
+      {
+        src: "/photos/around-the-school/soccer-goal-outdoor-play.jpg",
+        alt: "Two Graceland pupils sitting together inside a small goal frame on the school's outdoor sports court",
+        caption: "Finding new ways to play on the sports court",
+      },
+      {
+        src: "/photos/around-the-school/toddlers-outdoor-play-turf.jpg",
+        alt: "Graceland toddlers playing together on the outdoor turf area, with a ride-on toy car nearby",
+        caption: "Outdoor play time for our youngest pupils",
+      },
       "Garden & nature area",
       "Lunchtime",
       {
