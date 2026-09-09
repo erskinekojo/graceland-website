@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Photo } from "@/components/photo";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { ProgrammeCard } from "@/components/programme-card";
 import { SectionHeading } from "@/components/section-heading";
@@ -154,9 +155,15 @@ export default async function Home() {
             description="From practical-life work to Sports Day, a look at everyday moments across the school."
           />
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
-            {["Practical life", "Outdoor play", "Reading corner", "Sports Day"].map((label) => (
-              <PhotoPlaceholder key={label} label={label} aspect="aspect-square" />
-            ))}
+            <PhotoPlaceholder label="Practical life" aspect="aspect-square" />
+            <Photo
+              src="/photos/around-the-school/soccer-goal-outdoor-play.jpg"
+              alt="Two Graceland pupils sitting together inside a small goal frame on the school's outdoor sports court"
+              aspect="aspect-square"
+              sizes="(min-width: 640px) 25vw, 50vw"
+            />
+            <PhotoPlaceholder label="Reading corner" aspect="aspect-square" />
+            <PhotoPlaceholder label="Sports Day" aspect="aspect-square" />
           </div>
           <div className="mt-8 text-center">
             <Link
