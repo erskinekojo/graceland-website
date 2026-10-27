@@ -59,9 +59,10 @@ html[data-theme="ghana-month"] .toy-glow {
   color: #111111;
 }
 
-/* Ramadan and Eid: midnight indigo with the default gold accent */
+/* Ramadan and both Eids: midnight indigo with the default gold accent */
 html[data-theme="ramadan"],
-html[data-theme="eid"] {
+html[data-theme="eid"],
+html[data-theme="eid-al-adha"] {
   --color-brand-50: #eef2ff;
   --color-brand-100: #e0e7ff;
   --color-brand-200: #c7d2fe;

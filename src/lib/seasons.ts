@@ -24,6 +24,7 @@ export type SeasonId =
   | "ghana-month"
   | "ramadan"
   | "eid"
+  | "eid-al-adha"
   | "easter"
   | "new-year"
   | "month-of-love"
@@ -197,8 +198,29 @@ export const SEASONS: Season[] = [
     },
   },
   {
+    id: "eid-al-adha",
+    label: "Eid al-Adha",
+    banner: { text: "Eid al-Adha Mubarak! Wishing our families a blessed and joyful Eid." },
+    toy: {
+      hint: "Tap the lantern",
+      ariaLabel: "Lantern: tap for an Eid al-Adha message",
+      announce: "An Eid al-Adha message is showing.",
+      effect: "fountain-fall",
+      shapes: ["star", "crescent", "confetti"],
+      colors: ["#fcd34d", "#f59e0b", "#a5b4fc", "#818cf8", "#f9a8d4"],
+      card: {
+        title: "Eid al-Adha Mubarak",
+        messages: [
+          "Eid al-Adha Mubarak! Wishing you and your family a blessed and joyful Eid.",
+          "Eid al-Adha is a time for sharing, giving and gratitude.",
+          "Share what you have: a kind word, a meal, or help for someone in need.",
+        ],
+      },
+    },
+  },
+  {
     id: "eid",
-    label: "Eid",
+    label: "Eid al-Fitr",
     banner: { text: "Eid Mubarak! Wishing all our families who celebrate a joyful Eid." },
     toy: {
       hint: "Tap the lantern",
@@ -427,7 +449,7 @@ type Rule = { id: SeasonId } & (
   | { t: "fixed"; m: number; d: number; before: number; after: number }
   | { t: "nth"; m: number; wd: number; n: number; before: number; after: number } // wd: 0 = Sunday
   | { t: "easter"; before: number; after: number }
-  | { t: "hijri"; month: number; maxDay?: number }
+  | { t: "hijri"; month: number; minDay?: number; maxDay?: number }
   | { t: "month"; m: number }
   | { t: "span"; from: [number, number]; to: [number, number] }
 );
@@ -448,7 +470,8 @@ export const RULES: Rule[] = [
   // Movable religious seasons
   { id: "easter", t: "easter", before: 7, after: 1 }, // Palm Sunday to Easter Monday
   { id: "ramadan", t: "hijri", month: 9 },
-  { id: "eid", t: "hijri", month: 10, maxDay: 3 }, // first three days of Shawwal
+  { id: "eid", t: "hijri", month: 10, maxDay: 3 }, // Eid al-Fitr: first three days of Shawwal
+  { id: "eid-al-adha", t: "hijri", month: 12, minDay: 10, maxDay: 12 }, // Eid al-Adha: 10th-12th of Dhu al-Hijjah
   // Month-long and festive seasons
   { id: "ghana-month", t: "month", m: 3 },
   { id: "pink-october", t: "month", m: 10 },
@@ -477,7 +500,7 @@ else if(r.t==="nth"){c=nth(y,r.m,r.wd,r.n);hit=t>=c-r.before&&t<=c+r.after;}
 else if(r.t==="easter"){c=easter(y);hit=t>=c-r.before&&t<=c+r.after;}
 else if(r.t==="month"){hit=m===r.m;}
 else if(r.t==="span"){var md=m*100+d,a=r.from[0]*100+r.from[1],b=r.to[0]*100+r.to[1];hit=a<=b?(md>=a&&md<=b):(md>=a||md<=b);}
-else if(r.t==="hijri"){if(h===undefined){h=hij(now)||false;}hit=!!h&&h.month===r.month&&(!r.maxDay||h.day<=r.maxDay);}
+else if(r.t==="hijri"){if(h===undefined){h=hij(now)||false;}hit=!!h&&h.month===r.month&&(!r.minDay||h.day>=r.minDay)&&(!r.maxDay||h.day<=r.maxDay);}
 if(hit){return r.id;}}
 return null;}`;
 

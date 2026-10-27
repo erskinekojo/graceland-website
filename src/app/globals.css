@@ -25,7 +25,9 @@
   --color-sun-100: #ffefc7;
   --color-sun-300: #ffd166;
   --color-sun-500: #f2a900;
-  --color-sun-600: #c98600;
+  /* Deep gold for text labels: >= 4.5:1 on cream and on the pale gold tints
+     (the earlier #c98600 was only ~3:1). */
+  --color-sun-600: #946000;
 
   --color-cream: #fffdf8;
   --color-ink: #1c2521;

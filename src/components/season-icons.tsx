@@ -110,6 +110,7 @@ export function SeasonIcon({ id, size = 20, stage = 0, draw, className }: IconPr
 
     case "ramadan":
     case "eid":
+    case "eid-al-adha":
       // A lantern (fanous)
       return wrap(
         <g {...stroke} strokeWidth={1.6}>
