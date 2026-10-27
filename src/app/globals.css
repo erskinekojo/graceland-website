@@ -30,6 +30,161 @@
   --color-ink: #1c2521;
 }
 
+/*
+ * Pink October (Breast Cancer Awareness Month). Switched on by the script in
+ * layout.tsx during October (or with ?theme=pink for previews). It only
+ * re-maps the brand tokens, so every page picks it up with no component
+ * changes. Pink-600 and darker keep >= 4.5:1 contrast with white text.
+ */
+html[data-theme="pink-october"] {
+  --background: #fffafc;
+  --color-cream: #fffafc;
+
+  --color-brand-50: #fdf2f8;
+  --color-brand-100: #fce7f3;
+  --color-brand-200: #fbcfe8;
+  --color-brand-300: #f9a8d4;
+  --color-brand-400: #f472b6;
+  --color-brand-500: #db2777;
+  --color-brand-600: #be185d;
+  --color-brand-700: #9d174d;
+  --color-brand-800: #831843;
+  --color-brand-900: #500724;
+  --color-brand-950: #3b0420;
+}
+
+/*
+ * Christmas. The brand is already emerald, so the green stays; the warm
+ * "sun" accent turns festive red instead. Red-600 and darker keep >= 4.5:1
+ * contrast on the cream background and with white text.
+ */
+html[data-theme="christmas"] {
+  --color-sun-50: #fef2f2;
+  --color-sun-100: #fee2e2;
+  --color-sun-300: #fca5a5;
+  --color-sun-500: #dc2626;
+  --color-sun-600: #b91c1c;
+}
+
+/* Seasonal banners only exist visually while their theme is on. */
+.pink-october-only,
+.christmas-only {
+  display: none;
+}
+html[data-theme="pink-october"] .pink-october-only,
+html[data-theme="christmas"] .christmas-only {
+  display: block;
+}
+
+/* ---------- Seasonal interactions ---------- */
+
+/* Keep the floating button from covering the footer's last line. */
+html[data-theme="pink-october"] footer,
+html[data-theme="christmas"] footer {
+  padding-bottom: 4.5rem;
+}
+
+/* Pink ribbon: draws itself, glows, bounces on tap, and bursts when tapped. */
+@keyframes ribbon-draw {
+  to { stroke-dashoffset: 0; }
+}
+.pr-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: ribbon-draw 1.6s ease-out 0.3s forwards;
+}
+@keyframes ribbon-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(219, 39, 119, 0.4); }
+  60% { box-shadow: 0 0 0 14px rgba(219, 39, 119, 0); }
+}
+.pr-glow {
+  animation: ribbon-glow 2.6s ease-out infinite;
+}
+@keyframes ribbon-beat {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.18) rotate(-6deg); }
+  60% { transform: scale(0.96) rotate(4deg); }
+  100% { transform: scale(1); }
+}
+.pr-beat {
+  animation: ribbon-beat 0.55s ease, ribbon-glow 2.6s ease-out infinite;
+}
+@keyframes ribbon-burst {
+  0% { transform: translate(0, 0) scale(0.3) rotate(0deg); opacity: 0; }
+  15% { opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)) scale(1) rotate(var(--rot)); opacity: 0; }
+}
+.pr-particle {
+  animation: ribbon-burst var(--dur, 1.6s) cubic-bezier(0.15, 0.7, 0.3, 1) var(--delay, 0s) both;
+}
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+.pop-in {
+  animation: pop-in 0.22s ease-out both;
+}
+
+/* Snow globe: floats, shakes on tap, fires a fountain, then snow falls. */
+@keyframes globe-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+.globe-float {
+  animation: globe-float 3.2s ease-in-out infinite;
+}
+@keyframes globe-shake {
+  0%, 100% { transform: rotate(0deg); }
+  15% { transform: rotate(-14deg) translateY(-3px); }
+  35% { transform: rotate(12deg); }
+  55% { transform: rotate(-9deg); }
+  75% { transform: rotate(6deg); }
+}
+.globe-float.globe-shake {
+  animation: globe-shake 0.7s ease-in-out;
+  transform-origin: 50% 90%;
+}
+.flake {
+  filter: drop-shadow(0 0 1.5px rgba(14, 116, 144, 0.55));
+  will-change: transform, opacity;
+}
+@keyframes flake-fountain {
+  0% {
+    transform: translate(0, 0) scale(0.3) rotate(0deg);
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.2, 0.75, 0.4, 1);
+  }
+  10% { opacity: 1; }
+  35% {
+    transform: translate(var(--dx), var(--peak)) scale(1) rotate(var(--rot));
+    animation-timing-function: cubic-bezier(0.45, 0, 0.9, 0.6);
+  }
+  92% { opacity: 0.9; }
+  100% {
+    transform: translate(calc(var(--dx) + var(--drift)), var(--fall)) scale(1) rotate(calc(var(--rot) * 2.5));
+    opacity: 0;
+  }
+}
+.flake-fountain {
+  animation: flake-fountain var(--dur, 4s) linear var(--delay, 0s) both;
+}
+@keyframes flake-fall {
+  0% { transform: translate3d(0, -30px, 0) rotate(0deg); opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 0.9; }
+  100% { transform: translate3d(var(--drift), calc(100vh + 40px), 0) rotate(var(--rot)); opacity: 0; }
+}
+.flake-fall {
+  animation: flake-fall var(--dur, 7s) linear var(--delay, 0s) both;
+}
+
+/* Respect "reduce motion": no animation, ribbon shows fully drawn, no flying bits. */
+@media (prefers-reduced-motion: reduce) {
+  .pr-draw { animation: none; stroke-dashoffset: 0; }
+  .pr-glow, .pr-beat, .pop-in, .globe-float, .globe-float.globe-shake { animation: none; }
+  .pr-particle, .flake { display: none; }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

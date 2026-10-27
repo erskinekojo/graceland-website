@@ -82,7 +82,7 @@ export function ContactForm() {
       </div>
 
       {state.status === "error" && state.message && (
-        <div className="rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
+        <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
           {state.message}
         </div>
       )}
@@ -99,7 +99,7 @@ export function ContactForm() {
           className="mt-1.5 w-full rounded-xl border border-brand-200 bg-white px-4 py-2.5 text-sm text-ink outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20"
         />
         {state.fieldErrors?.name && (
-          <p className="mt-1.5 text-xs font-medium text-rose-600">{state.fieldErrors.name}</p>
+          <p className="mt-1.5 text-xs font-medium text-red-600">{state.fieldErrors.name}</p>
         )}
       </div>
 
@@ -115,7 +115,7 @@ export function ContactForm() {
           className="mt-1.5 w-full rounded-xl border border-brand-200 bg-white px-4 py-2.5 text-sm text-ink outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20"
         />
         {state.fieldErrors?.email && (
-          <p className="mt-1.5 text-xs font-medium text-rose-600">{state.fieldErrors.email}</p>
+          <p className="mt-1.5 text-xs font-medium text-red-600">{state.fieldErrors.email}</p>
         )}
       </div>
 
@@ -131,7 +131,7 @@ export function ContactForm() {
           className="mt-1.5 w-full resize-none rounded-xl border border-brand-200 bg-white px-4 py-2.5 text-sm text-ink outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20"
         />
         {state.fieldErrors?.message && (
-          <p className="mt-1.5 text-xs font-medium text-rose-600">{state.fieldErrors.message}</p>
+          <p className="mt-1.5 text-xs font-medium text-red-600">{state.fieldErrors.message}</p>
         )}
       </div>
 
