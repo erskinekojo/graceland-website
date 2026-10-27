@@ -1,0 +1,424 @@
+/*
+ * Seasonal themes. Which season is active, and for how long, is decided in
+ * lib/seasons.ts; the script in layout.tsx sets data-theme on <html>.
+ *
+ * Each palette only re-maps the brand tokens (and sometimes the warm "sun"
+ * accent), so every page re-themes with no component changes. brand-600 is the
+ * main button colour and must keep >= 4.5:1 contrast with white text; the dark
+ * brand-950 is the footer background.
+ */
+
+/* ----------------------------- Palettes ---------------------------------- */
+
+/* Pink October */
+html[data-theme="pink-october"] {
+  --background: #fffafc;
+  --color-cream: #fffafc;
+  --color-brand-50: #fdf2f8;
+  --color-brand-100: #fce7f3;
+  --color-brand-200: #fbcfe8;
+  --color-brand-300: #f9a8d4;
+  --color-brand-400: #f472b6;
+  --color-brand-500: #db2777;
+  --color-brand-600: #be185d;
+  --color-brand-700: #9d174d;
+  --color-brand-800: #831843;
+  --color-brand-900: #500724;
+  --color-brand-950: #3b0420;
+}
+
+/* Christmas: the brand is already emerald, so keep it and turn the warm accent festive red */
+html[data-theme="christmas"] {
+  --color-sun-50: #fef2f2;
+  --color-sun-100: #fee2e2;
+  --color-sun-300: #fca5a5;
+  --color-sun-500: #f87171;
+  --color-sun-600: #b91c1c;
+}
+
+/* Ghana Month: flag green, gold and red */
+html[data-theme="ghana-month"] {
+  --color-brand-500: #0a8a53;
+  --color-brand-600: #006b3f;
+  --color-brand-700: #005533;
+  --color-brand-800: #00432a;
+  --color-brand-900: #003320;
+  --color-brand-950: #001f13;
+  --color-sun-50: #fffbe6;
+  --color-sun-100: #fff1b8;
+  --color-sun-300: #fde047;
+  --color-sun-500: #fcd116;
+  --color-sun-600: #b4141f;
+  --banner-bg: #111111;
+  --banner-icon: #fcd116;
+  --banner-strip: linear-gradient(90deg, #ce1126 0 33.34%, #fcd116 33.34% 66.67%, #006b3f 66.67%);
+  --banner-strip-h: 4px;
+}
+/* The Black Star toy is actually black */
+html[data-theme="ghana-month"] .toy-glow {
+  color: #111111;
+}
+
+/* Ramadan and Eid: midnight indigo with the default gold accent */
+html[data-theme="ramadan"],
+html[data-theme="eid"] {
+  --color-brand-50: #eef2ff;
+  --color-brand-100: #e0e7ff;
+  --color-brand-200: #c7d2fe;
+  --color-brand-300: #a5b4fc;
+  --color-brand-400: #818cf8;
+  --color-brand-500: #4f46e5;
+  --color-brand-600: #4338ca;
+  --color-brand-700: #3730a3;
+  --color-brand-800: #312e81;
+  --color-brand-900: #25225f;
+  --color-brand-950: #14122f;
+  --banner-icon: #fcd34d;
+}
+
+/* Easter: spring violet */
+html[data-theme="easter"] {
+  --color-brand-50: #f5f3ff;
+  --color-brand-100: #ede9fe;
+  --color-brand-200: #ddd6fe;
+  --color-brand-300: #c4b5fd;
+  --color-brand-400: #a78bfa;
+  --color-brand-500: #8b5cf6;
+  --color-brand-600: #6d28d9;
+  --color-brand-700: #5b21b6;
+  --color-brand-800: #4c1d95;
+  --color-brand-900: #3b1578;
+  --color-brand-950: #240b4a;
+}
+
+/* New Year: black-tie slate with the default gold accent */
+html[data-theme="new-year"] {
+  --color-brand-50: #f8fafc;
+  --color-brand-100: #f1f5f9;
+  --color-brand-200: #e2e8f0;
+  --color-brand-300: #cbd5e1;
+  --color-brand-400: #94a3b8;
+  --color-brand-500: #475569;
+  --color-brand-600: #334155;
+  --color-brand-700: #1e293b;
+  --color-brand-800: #172033;
+  --color-brand-900: #0f172a;
+  --color-brand-950: #070c18;
+  --banner-icon: #fbbf24;
+}
+
+/* Month of Love: rose */
+html[data-theme="month-of-love"] {
+  --color-brand-50: #fff1f2;
+  --color-brand-100: #ffe4e6;
+  --color-brand-200: #fecdd3;
+  --color-brand-300: #fda4af;
+  --color-brand-400: #fb7185;
+  --color-brand-500: #e11d48;
+  --color-brand-600: #be123c;
+  --color-brand-700: #9f1239;
+  --color-brand-800: #881337;
+  --color-brand-900: #5c0e26;
+  --color-brand-950: #35071a;
+}
+
+/* Farmers' Day: field green with a harvest-orange accent */
+html[data-theme="farmers-day"] {
+  --color-brand-50: #f7fee7;
+  --color-brand-100: #ecfccb;
+  --color-brand-200: #d9f99d;
+  --color-brand-300: #bef264;
+  --color-brand-400: #a3e635;
+  --color-brand-500: #65a30d;
+  --color-brand-600: #4d7c0f;
+  --color-brand-700: #3f6212;
+  --color-brand-800: #365314;
+  --color-brand-900: #28400f;
+  --color-brand-950: #162a05;
+  --color-sun-50: #fff7ed;
+  --color-sun-100: #ffedd5;
+  --color-sun-300: #fdba74;
+  --color-sun-500: #fb923c;
+  --color-sun-600: #c2410c;
+}
+
+/* Mother's Day: fuchsia */
+html[data-theme="mothers-day"] {
+  --color-brand-50: #fdf4ff;
+  --color-brand-100: #fae8ff;
+  --color-brand-200: #f5d0fe;
+  --color-brand-300: #f0abfc;
+  --color-brand-400: #e879f9;
+  --color-brand-500: #c026d3;
+  --color-brand-600: #a21caf;
+  --color-brand-700: #86198f;
+  --color-brand-800: #701a75;
+  --color-brand-900: #4f0f54;
+  --color-brand-950: #2f0832;
+}
+
+/* Father's Day: blue */
+html[data-theme="fathers-day"] {
+  --color-brand-50: #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-200: #bfdbfe;
+  --color-brand-300: #93c5fd;
+  --color-brand-400: #60a5fa;
+  --color-brand-500: #2563eb;
+  --color-brand-600: #1d4ed8;
+  --color-brand-700: #1e40af;
+  --color-brand-800: #1e3a8a;
+  --color-brand-900: #172554;
+  --color-brand-950: #0b1a3d;
+}
+
+/* Day of the Girl Child: bold orange */
+html[data-theme="girl-child"] {
+  --color-brand-50: #fff7ed;
+  --color-brand-100: #ffedd5;
+  --color-brand-200: #fed7aa;
+  --color-brand-300: #fdba74;
+  --color-brand-400: #fb923c;
+  --color-brand-500: #ea580c;
+  --color-brand-600: #c2410c;
+  --color-brand-700: #9a3412;
+  --color-brand-800: #7c2d12;
+  --color-brand-900: #5a1f0d;
+  --color-brand-950: #3a1208;
+}
+
+/* International Literacy Day: teal */
+html[data-theme="literacy-day"] {
+  --color-brand-50: #f0fdfa;
+  --color-brand-100: #ccfbf1;
+  --color-brand-200: #99f6e4;
+  --color-brand-300: #5eead4;
+  --color-brand-400: #2dd4bf;
+  --color-brand-500: #0d9488;
+  --color-brand-600: #0f766e;
+  --color-brand-700: #115e59;
+  --color-brand-800: #134e4a;
+  --color-brand-900: #0c3733;
+  --color-brand-950: #052321;
+}
+
+/* World Environment Day: leaf green with a sky-blue accent */
+html[data-theme="environment-day"] {
+  --color-brand-50: #f0fdf4;
+  --color-brand-100: #dcfce7;
+  --color-brand-200: #bbf7d0;
+  --color-brand-300: #86efac;
+  --color-brand-400: #4ade80;
+  --color-brand-500: #16a34a;
+  --color-brand-600: #15803d;
+  --color-brand-700: #166534;
+  --color-brand-800: #14532d;
+  --color-brand-900: #0f3d22;
+  --color-brand-950: #052e16;
+  --color-sun-50: #f0f9ff;
+  --color-sun-100: #e0f2fe;
+  --color-sun-300: #7dd3fc;
+  --color-sun-500: #38bdf8;
+  --color-sun-600: #0369a1;
+}
+
+/* ------------------------------ Banners ---------------------------------- */
+
+/* Hidden by default; BANNER_CSS (from lib/seasons.ts, injected in layout.tsx)
+   shows the one matching the active theme. */
+.season-banner {
+  display: none;
+  background: var(--banner-bg, var(--color-brand-600));
+  color: #fff;
+}
+.season-banner::before {
+  content: "";
+  display: block;
+  height: var(--banner-strip-h, 0);
+  background: var(--banner-strip, transparent);
+}
+.season-banner-icon {
+  color: var(--banner-icon, currentColor);
+}
+
+/* Keep the floating toy from covering the footer's last line. */
+html[data-theme] footer {
+  padding-bottom: 4.5rem;
+}
+
+/* ---------------------------- Toy animations ------------------------------ */
+
+/* The pink ribbon draws itself once. (Each stroke has pathLength=1.) */
+@keyframes icon-draw {
+  to { stroke-dashoffset: 0; }
+}
+.icon-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: icon-draw 1.6s ease-out 0.3s forwards;
+}
+
+@keyframes toy-glow {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-brand-500) 40%, transparent); }
+  60% { box-shadow: 0 0 0 14px color-mix(in srgb, var(--color-brand-500) 0%, transparent); }
+}
+.toy-glow {
+  animation: toy-glow 2.6s ease-out infinite;
+}
+
+@keyframes toy-beat {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.18) rotate(-6deg); }
+  60% { transform: scale(0.96) rotate(4deg); }
+  100% { transform: scale(1); }
+}
+.toy-beat {
+  animation: toy-beat 0.55s ease, toy-glow 2.6s ease-out infinite;
+}
+
+@keyframes toy-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+.toy-float {
+  animation: toy-float 3.2s ease-in-out infinite;
+}
+
+@keyframes toy-shake {
+  0%, 100% { transform: rotate(0deg); }
+  15% { transform: rotate(-14deg) translateY(-3px); }
+  35% { transform: rotate(12deg); }
+  55% { transform: rotate(-9deg); }
+  75% { transform: rotate(6deg); }
+}
+.toy-float.toy-shake {
+  animation: toy-shake 0.7s ease-in-out;
+  transform-origin: 50% 90%;
+}
+
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+.pop-in {
+  animation: pop-in 0.22s ease-out both;
+}
+
+/* Flying shapes. Each one carries its own --dx/--dy/--dur/--delay. */
+.toy-particle {
+  will-change: transform, opacity;
+  filter: drop-shadow(0 0 1.5px rgba(15, 23, 42, 0.35));
+}
+.toy-particle.shape-flake {
+  filter: drop-shadow(0 0 1.5px rgba(14, 116, 144, 0.55));
+}
+
+/* Burst: a fan of shapes up and to the left of the toy */
+@keyframes toy-burst {
+  0% { transform: translate(0, 0) scale(0.3) rotate(0deg); opacity: 0; }
+  15% { opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)) scale(1) rotate(var(--rot)); opacity: 0; }
+}
+.toy-burst {
+  animation: toy-burst var(--dur, 1.6s) cubic-bezier(0.15, 0.7, 0.3, 1) var(--delay, 0s) both;
+}
+
+/* Float: rise slowly up the screen while the inner wrapper sways side to side */
+@keyframes toy-rise {
+  0% { transform: translate3d(0, 0, 0) scale(0.4); opacity: 0; }
+  8% { transform: translate3d(0, -24px, 0) scale(1); opacity: 1; }
+  88% { opacity: 0.95; }
+  100% { transform: translate3d(var(--drift), var(--rise), 0) scale(1); opacity: 0; }
+}
+.toy-rise {
+  animation: toy-rise var(--dur, 8s) ease-in-out var(--delay, 0s) both;
+}
+@keyframes toy-sway {
+  from { transform: translateX(calc(var(--sway, 16px) * -1)) rotate(-14deg); }
+  to { transform: translateX(var(--sway, 16px)) rotate(14deg); }
+}
+.toy-sway {
+  animation: toy-sway var(--swaydur, 2.4s) ease-in-out infinite alternate;
+  transform-origin: 50% 20%;
+}
+
+/* The ribbon button itself bobs gently, as if floating (glow keeps pulsing) */
+.toy-glow.toy-bob {
+  animation: toy-glow 2.6s ease-out infinite, toy-float 3.2s ease-in-out infinite;
+}
+.toy-beat.toy-bob {
+  animation: toy-beat 0.55s ease, toy-glow 2.6s ease-out infinite;
+}
+
+/* Fountain: pop out of the toy, then fall */
+@keyframes toy-fountain {
+  0% {
+    transform: translate(0, 0) scale(0.3) rotate(0deg);
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.2, 0.75, 0.4, 1);
+  }
+  10% { opacity: 1; }
+  35% {
+    transform: translate(var(--dx), var(--peak)) scale(1) rotate(var(--rot));
+    animation-timing-function: cubic-bezier(0.45, 0, 0.9, 0.6);
+  }
+  92% { opacity: 0.9; }
+  100% {
+    transform: translate(calc(var(--dx) + var(--drift)), var(--fall)) scale(1) rotate(calc(var(--rot) * 2.5));
+    opacity: 0;
+  }
+}
+.toy-fountain {
+  animation: toy-fountain var(--dur, 4s) linear var(--delay, 0s) both;
+}
+
+/* Fall: a gentle drift down the whole screen */
+@keyframes toy-fall {
+  0% { transform: translate3d(0, -30px, 0) rotate(0deg); opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 0.9; }
+  100% { transform: translate3d(var(--drift), calc(100vh + 40px), 0) rotate(var(--rot)); opacity: 0; }
+}
+.toy-fall {
+  animation: toy-fall var(--dur, 7s) linear var(--delay, 0s) both;
+}
+
+/* Fireworks: sparks radiating out, then drooping and fading */
+@keyframes toy-spark {
+  0% { transform: translate(0, 0) scale(1); opacity: 0; }
+  8% { opacity: 1; }
+  70% { transform: translate(var(--dx), var(--dy)) scale(0.9); opacity: 1; }
+  100% { transform: translate(var(--dx), calc(var(--dy) + 36px)) scale(0.2); opacity: 0; }
+}
+.toy-spark {
+  filter: drop-shadow(0 0 4px currentColor);
+  animation: toy-spark var(--dur, 1.4s) cubic-bezier(0.1, 0.8, 0.3, 1) var(--delay, 0s) both;
+}
+@keyframes toy-veil {
+  0% { opacity: 0; }
+  15% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+.toy-veil {
+  background: rgba(2, 6, 23, 0.4);
+  animation: toy-veil 4.2s ease-in-out both;
+}
+
+/* Water drops landing on the seedling */
+@keyframes toy-drop {
+  0% { transform: translate(var(--dx), -70px); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translate(var(--dx), 0); opacity: 0; }
+}
+.toy-drop {
+  animation: toy-drop var(--dur, 1s) ease-in var(--delay, 0s) both;
+}
+
+/* Respect "reduce motion": nothing moves, the ribbon shows fully drawn, and no shapes fly. */
+@media (prefers-reduced-motion: reduce) {
+  .icon-draw { animation: none; stroke-dashoffset: 0; }
+  .toy-glow, .toy-beat, .toy-float, .toy-float.toy-shake, .pop-in { animation: none; }
+  .toy-glow.toy-bob, .toy-beat.toy-bob { animation: none; }
+  .toy-particle, .toy-veil { display: none; }
+}
