@@ -1,0 +1,58 @@
+/* Gallery slideshow animations. Kept separate from the page styles. */
+
+/* Slow zoom on the current photo (the "Ken Burns" drift) */
+@keyframes gal-kb {
+  from { transform: scale(1); }
+  to { transform: scale(1.07); }
+}
+.gal-slide.is-current .gal-kb {
+  animation: gal-kb 14s linear forwards;
+}
+.gal-root.is-paused .gal-slide.is-current .gal-kb {
+  animation-play-state: paused;
+}
+
+/* Thin progress line along the bottom of the stage while playing */
+@keyframes gal-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.gal-progress {
+  transform-origin: left;
+  animation: gal-progress var(--ms, 6500ms) linear forwards;
+}
+
+/* Caption fades up when the photo changes */
+@keyframes gal-rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+.gal-rise {
+  animation: gal-rise 0.55s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gal-slide.is-current .gal-kb,
+  .gal-rise { animation: none; }
+  .gal-slide { transition: none !important; }
+  .gal-progress { display: none; }
+}
+
+/* During a seasonal theme a floating button sits bottom-right. Leave it room
+   beside the controls, and hide its hint pill here so it never covers them. */
+@media (min-width: 768px) {
+  html[data-theme] .gal-controls {
+    margin-right: 4.75rem;
+  }
+}
+body:has(.gal-root) .toy-hint {
+  display: none;
+}
+
+/* Hide the filmstrip scrollbar but keep it scrollable */
+.gal-strip {
+  scrollbar-width: none;
+}
+.gal-strip::-webkit-scrollbar {
+  display: none;
+}

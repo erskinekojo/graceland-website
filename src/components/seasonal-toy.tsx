@@ -387,7 +387,7 @@ function Toy({ id, toy }: { id: SeasonId; toy: ToyConfig }) {
 
         <div className="relative">
           {(hinted || toast) && (
-            <span className="pointer-events-none absolute right-full top-1/2 mr-3 -translate-y-1/2 whitespace-nowrap rounded-full border border-brand-100 bg-white px-3 py-1.5 text-xs font-semibold text-brand-700 shadow-md">
+            <span className="toy-hint pointer-events-none absolute right-full top-1/2 mr-3 -translate-y-1/2 whitespace-nowrap rounded-full border border-brand-100 bg-white px-3 py-1.5 text-xs font-semibold text-brand-700 shadow-md">
               {toast || toy.hint}
             </span>
           )}
