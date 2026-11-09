@@ -53,10 +53,15 @@ const EXTRA_PHOTOS: PostPhoto[] = [
     alt: "Graceland toddlers playing together on the outdoor turf area, with a ride-on toy car nearby",
     caption: "Outdoor play time for our youngest pupils",
   },
+  {
+    src: "/photos/around-the-school/two-pupils-arms-around.jpg",
+    alt: "Two smiling Graceland pupils in school uniform standing side by side with their arms around each other",
+    caption: "Smiles from two of our pupils",
+  },
 ];
 
 /**
- * One "album" per post (newest first) plus the extras. We then deal photos out
+ * The extras first, then one "album" per post (newest first). We deal photos out
  * round-robin, one from each album in turn, so the slideshow keeps changing
  * scene instead of showing seven graduation photos in a row.
  */
@@ -82,7 +87,8 @@ function buildPhotos(): GalleryPhoto[] {
   const extras = EXTRA_PHOTOS.filter((p) => !seen.has(p.src)).map(
     (p): GalleryPhoto => ({ ...p, category: "School life" }),
   );
-  if (extras.length) albums.push(extras);
+  // The everyday-life photos go first, so the slideshow opens on them.
+  if (extras.length) albums.unshift(extras);
 
   const out: GalleryPhoto[] = [];
   for (let round = 0; out.length < albums.reduce((n, a) => n + a.length, 0); round++) {

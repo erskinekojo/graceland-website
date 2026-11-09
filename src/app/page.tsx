@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Photo } from "@/components/photo";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { ProgrammeCard } from "@/components/programme-card";
@@ -52,11 +53,17 @@ export default async function Home() {
           </div>
 
           <div className="relative">
-            <PhotoPlaceholder
-              label="Hero photo — children at work in a Graceland classroom"
-              aspect="aspect-[4/5] sm:aspect-[5/4]"
-              className="shadow-xl shadow-brand-900/10"
-            />
+            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-brand-200/70 shadow-xl shadow-brand-900/10 sm:aspect-[5/4]">
+              <Image
+                src="/photos/around-the-school/two-pupils-arms-around.jpg"
+                alt="Two smiling Graceland pupils in school uniform standing side by side with their arms around each other"
+                fill
+                sizes="(min-width: 1024px) 560px, 100vw"
+                loading="eager"
+                fetchPriority="high"
+                className="object-cover object-[45%_center]"
+              />
+            </div>
             <div className="absolute -bottom-6 -left-6 hidden w-52 rounded-2xl bg-white p-4 shadow-lg shadow-brand-900/10 ring-1 ring-brand-100 sm:block">
               <p className="font-heading text-2xl font-bold text-brand-700">1–12</p>
               <p className="text-xs text-ink/60">years old, one connected school journey</p>
