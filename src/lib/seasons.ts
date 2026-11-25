@@ -465,7 +465,7 @@ export const RULES: Rule[] = [
   { id: "mothers-day", t: "nth", m: 5, wd: 0, n: 2, before: 6, after: 0 }, // 2nd Sunday of May
   { id: "literacy-day", t: "fixed", m: 9, d: 8, before: 4, after: 0 }, // 8 Sep
   { id: "environment-day", t: "fixed", m: 6, d: 5, before: 4, after: 0 }, // 5 Jun
-  { id: "farmers-day", t: "nth", m: 12, wd: 5, n: 1, before: 4, after: 0 }, // 1st Friday of December
+  { id: "farmers-day", t: "nth", m: 12, wd: 5, n: 1, before: 4, after: 0 }, // 1st Friday of December; its Monday-to-Friday week pauses Christmas, which then resumes
   { id: "ghana-month", t: "fixed", m: 3, d: 6, before: 2, after: 1 }, // Independence Day, wins even during Ramadan
   // Movable religious seasons
   { id: "easter", t: "easter", before: 7, after: 1 }, // Palm Sunday to Easter Monday
@@ -477,7 +477,7 @@ export const RULES: Rule[] = [
   { id: "pink-october", t: "month", m: 10 },
   { id: "month-of-love", t: "month", m: 2 },
   { id: "new-year", t: "span", from: [12, 27], to: [1, 7] },
-  { id: "christmas", t: "span", from: [12, 1], to: [12, 26] },
+  { id: "christmas", t: "span", from: [11, 8], to: [12, 26] }, // the festive season starts in the 2nd week of November
 ];
 
 /**
