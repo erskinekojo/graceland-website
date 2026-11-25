@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { sendToWeb3Forms } from "@/lib/web3forms";
 import { programmes } from "@/lib/content";
+import { looksLikeSolicitation, MIN_FILL_MS, SOLICITATION_MESSAGE, TOO_FAST_MESSAGE } from "@/lib/spam-guard";
 
 type InquiryState = {
   status: "idle" | "success" | "error";
@@ -20,6 +21,7 @@ function FieldError({ message }: { message?: string }) {
 export function AdmissionForm() {
   const [state, setState] = useState<InquiryState>(initialState);
   const [pending, setPending] = useState(false);
+  const [openedAt] = useState(() => Date.now());
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -56,6 +58,15 @@ export function AdmissionForm() {
     if (website) {
       // Honeypot tripped — silently pretend success, drop the submission.
       setState({ status: "success", message: "Thank you — we'll be in touch soon." });
+      return;
+    }
+
+    if (Date.now() - openedAt < MIN_FILL_MS) {
+      setState({ status: "error", message: TOO_FAST_MESSAGE });
+      return;
+    }
+    if (looksLikeSolicitation(parentName, childName, message)) {
+      setState({ status: "error", message: SOLICITATION_MESSAGE });
       return;
     }
 
